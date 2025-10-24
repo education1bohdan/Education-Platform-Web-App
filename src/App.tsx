@@ -1,10 +1,13 @@
-import Example from "./components/Example";
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main.tsx"
+import "./App.scss"
 
 function App() {
   return (
-    <>
-      <Example />
-    </>
+    <div className='App'>
+      <Header />
+      <Main />
+    </div>
   );
 }
 
