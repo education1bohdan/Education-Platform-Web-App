@@ -1,13 +1,13 @@
 import './Button.scss';
 
 interface props {
-    text: string;
-    handler: React.MouseEventHandler<HTMLButtonElement>;
+    buttonText: string;
+    onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const LogoutButton: React.FC<props> = ({ text, handler }: props) => {
+const LogoutButton: React.FC<props> = ({ buttonText, onClick }: props) => {
     return (
-        <button onClick={handler}>{text}</button>
+        <button onClick={onClick}>{buttonText}</button>
     )
 }
 
