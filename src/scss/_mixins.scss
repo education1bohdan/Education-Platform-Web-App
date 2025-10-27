@@ -1,0 +1,7 @@
+@mixin main-content-generic() {
+    .main-content {
+        grid-area: content;
+        height: 100vh;
+        background-color: #F7F7F7;
+    }
+}

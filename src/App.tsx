@@ -1,12 +1,18 @@
 import Header from "./components/Header/Header";
-import Main from "./components/Main/Main.tsx"
+import Courses from "./components/Courses/Courses";
+import EmptyCoursesList from "./components/EmptyCourseList/EmptyCourseList"
 import "./App.scss"
+
+let isEmpty = false;
 
 function App() {
   return (
     <div className='App'>
       <Header />
-      <Main />
+      {isEmpty
+        ? <EmptyCoursesList />
+        : <Courses />
+      }
     </div>
   );
 }
