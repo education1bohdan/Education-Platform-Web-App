@@ -1,8 +1,12 @@
 interface Props {
-
+    title: string;
+    description: string;
+    creationDate: string;
+    duration: string;
+    authors: string;
 }
 
-const CourseCard: React.FC = (props: Props) => {
+const CourseCard = ({ title, description, creationDate, duration, authors }: Props) => {
     return (<div className="CourseCart">
 
     </div>);
