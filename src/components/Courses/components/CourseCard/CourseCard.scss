@@ -1,0 +1,32 @@
+@use "../../../../scss/variables" as vars;
+
+.course-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    margin: 2rem;
+    box-sizing: border-box;
+    padding: 1.7rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.12);
+    column-gap: 4em;
+
+    .side-line {
+        background-color: vars.$primary-dark;
+        width: 7px;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    .left-side {
+
+        h2 {
+            margin: 0 0 0.5em 0;
+        }
+    }
+}

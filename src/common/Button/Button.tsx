@@ -5,7 +5,7 @@ interface props {
     onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const LogoutButton: React.FC<props> = ({ buttonText, onClick }: props) => {
+const LogoutButton: React.FC<props> = ({ buttonText, onClick }) => {
     return (
         <button onClick={onClick}>{buttonText}</button>
     )

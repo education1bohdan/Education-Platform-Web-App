@@ -7,23 +7,25 @@ import './Courses.scss';
 const Courses: React.FC = () => {
     return (
         <div className='main-content'>
-            <div className='course-card-list'>
-                {mockedCoursesList.map(({ id, title, description, creationDate, duration, authors }) => {
+            <ul className='courses-list'>
+                {mockedCoursesList.map(({ id, title, description, creationDate, duration, authors }, index) => {
                     const authourNames: string[] = authors
                         .map(authorId => mockedAuthorsList.find((author) => author.id === authorId)?.name).filter(Boolean)
                         .filter((name): name is string => name !== undefined);
 
                     return (
-                        <CourseCard
-                            key={id}
-                            title={title}
-                            description={description}
-                            creationDate={formatCreationDate(creationDate)}
-                            duration={getCourseDuration(duration)}
-                            authors={authourNames.join(", ")}
-                        />)
+                        <li key={id || index}>
+                            <CourseCard
+                                title={title}
+                                description={description}
+                                creationDate={formatCreationDate(creationDate)}
+                                duration={getCourseDuration(duration)}
+                                authors={authourNames.join(", ")}
+                            />
+                        </li>
+                    )
                 })}
-            </div>
+            </ul>
         </div>
     )
 }
