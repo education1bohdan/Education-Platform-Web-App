@@ -19,16 +19,22 @@ const CourseCard: React.FC<Props> = ({ title, description, creationDate, duratio
     return (
         <div className="course-card">
             <div className="side-line"></div>
-            <div className="left-side">
-                <h2>{title}</h2>
-                <p>{description}</p>
+            <h2>{title}</h2>
+            <div className="course-container">
+                <div className="left-side">
+                    <p>{description}</p>
+                </div>
+                <div className="right-side">
+                    <ul className='course-info-list'>
+                        <li><b>Authors: </b>{authors}</li>
+                        <li><b>Duration: </b>{duration}</li>
+                        <li><b>Created: </b>{creationDate}</li>
+                    </ul>
+
+                    <Button buttonText={SHOW_COURSE_TEXT} onClick={handleClick} />
+                </div>
             </div>
-            <div className="right-side">
-                <p><b>Authors: </b>{authors}</p>
-                <p><b>Duration: </b>{duration}</p>
-                <p><b>Created: </b>{creationDate}</p>
-                <Button buttonText={SHOW_COURSE_TEXT} onClick={handleClick} />
-            </div>
+
         </div>
     );
 }

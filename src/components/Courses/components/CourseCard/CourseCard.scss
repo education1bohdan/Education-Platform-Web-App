@@ -2,16 +2,17 @@
 
 .course-card {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
+    // align-items: flex-start;
     position: relative;
     margin: 2rem;
     box-sizing: border-box;
     padding: 1.7rem;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.12);
-    column-gap: 4em;
+    font-family: "Open Sans", sans-serif;
 
     .side-line {
         background-color: vars.$primary-dark;
@@ -19,14 +20,42 @@
         height: 100%;
         position: absolute;
         inset: 0;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
 
-    .left-side {
+    h2 {
+        margin: 0 0 0.5em 0;
+        font-size: 20px;
+    }
 
-        h2 {
-            margin: 0 0 0.5em 0;
+    .course-container {
+        display: flex;
+        column-gap: 4em;
+
+        .left-side {
+
+            p {
+                color: vars.$primary-dark;
+            }
+        }
+
+        .right-side {
+            display: flex;
+            flex-direction: column;
+            row-gap: 2rem;
+            width: 25%;
+            flex-shrink: 0;
+
+            .course-info-list {
+                color: vars.$primary-dark;
+                list-style: none;
+
+                b {
+                    font-weight: 700;
+                }
+            }
         }
     }
+
 }

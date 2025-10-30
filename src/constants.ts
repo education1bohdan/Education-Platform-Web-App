@@ -1,6 +1,6 @@
 export const LOGOUT_BUTTON_TEXT: string = 'LOGOUT';
 export const LOGIN_BUTTON_TEXT: string = 'LOGIN';
-export const SHOW_COURSE_TEXT: string = 'SHOW COURSE'
+export const SHOW_COURSE_TEXT: string = 'SHOW COURSE';
 
 export const mockedCoursesList = [
     {
@@ -46,3 +46,4 @@ export const mockedAuthorsList = [
     },
 ]
 
+export const styledButton = ``;
