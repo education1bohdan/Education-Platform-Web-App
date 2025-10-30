@@ -22,10 +22,10 @@ const UserLogout: React.FC = () => {
             {isLogged ? (
                 <>
                     <p>Test Name</p>
-                    <Button buttonText={LOGOUT_BUTTON_TEXT} onClick={handleLogout} />
+                    <Button buttonText={LOGOUT_BUTTON_TEXT} clickHandler={handleLogout} />
                 </>
             ) :
-                (<Button buttonText={LOGIN_BUTTON_TEXT} onClick={handleLogin} />)}
+                (<Button buttonText={LOGIN_BUTTON_TEXT} clickHandler={handleLogin} />)}
 
         </div>
 

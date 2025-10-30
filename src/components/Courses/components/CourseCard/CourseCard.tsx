@@ -31,7 +31,7 @@ const CourseCard: React.FC<Props> = ({ title, description, creationDate, duratio
                         <li><b>Created: </b>{creationDate}</li>
                     </ul>
 
-                    <Button buttonText={SHOW_COURSE_TEXT} onClick={handleClick} buttonWidth={'180px'} />
+                    <Button buttonText={SHOW_COURSE_TEXT} clickHandler={handleClick} buttonWidth={'180px'} />
                 </div>
             </div>
 

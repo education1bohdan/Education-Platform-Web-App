@@ -1,6 +1,6 @@
 @mixin main-content-generic() {
     .main-content {
         grid-area: content;
-        height: 100vh;
+        min-height: calc(100vh - 80px);
     }
 }
