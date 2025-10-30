@@ -46,4 +46,3 @@ export const mockedAuthorsList = [
     },
 ]
 
-export const styledButton = ``;
