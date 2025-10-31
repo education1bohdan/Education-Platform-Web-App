@@ -1,7 +1,8 @@
 export const LOGOUT_BUTTON_TEXT: string = 'LOGOUT';
 export const LOGIN_BUTTON_TEXT: string = 'LOGIN';
 export const SHOW_COURSE_TEXT: string = 'SHOW COURSE';
-export const ADD_NEW_COURSE_TEXT: string = 'ADD NEW COURSE'
+export const ADD_NEW_COURSE_TEXT: string = 'ADD NEW COURSE';
+export const BACK_TEXT: string = 'BACK';
 
 export const mockedCoursesList = [
     {

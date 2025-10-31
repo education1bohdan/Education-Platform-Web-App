@@ -1,17 +1,33 @@
 import CourseCard from './components/CourseCard/CourseCard';
-import { mockedCoursesList, mockedAuthorsList } from "../../constants";
 import formatCreationDate from '../helpers/formatCreationDate';
 import getCourseDuration from "../helpers/getCourseDuration";
+import getAuthorsNames from '../helpers/getAuthorsNames';
 import './Courses.scss';
 
-const Courses: React.FC = () => {
+interface Courses {
+    id: string;
+    title: string;
+    description: string;
+    creationDate: string;
+    duration: number;
+    authors: string[];
+}
+
+export interface Authors {
+    id: string;
+    name: string;
+}
+interface Props {
+    coursesList: Courses[];
+    authorsList: Authors[];
+}
+
+const Courses: React.FC<Props> = ({ coursesList, authorsList }) => {
     return (
         <div className='main-content'>
             <ul className='courses-list'>
-                {mockedCoursesList.map(({ id, title, description, creationDate, duration, authors }, index) => {
-                    const authourNames: string[] = authors
-                        .map(authorId => mockedAuthorsList.find((author) => author.id === authorId)?.name).filter(Boolean)
-                        .filter((name): name is string => name !== undefined);
+                {coursesList.map(({ id, title, description, creationDate, duration, authors }, index) => {
+                    const authourNames: string[] = getAuthorsNames(authors, authorsList)
 
                     return (
                         <li key={id || index}>
