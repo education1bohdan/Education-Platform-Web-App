@@ -43,6 +43,7 @@
         .right-side {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             row-gap: 2rem;
             width: 25%;
             min-width: 180px;

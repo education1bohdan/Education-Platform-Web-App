@@ -1,6 +1,6 @@
 @mixin main-content-generic() {
     .main-content {
-        padding: 5rem 0;
+        padding: 3.5rem 0;
         box-sizing: border-box;
         grid-area: content;
         min-height: calc(100vh - 80px);

@@ -1,0 +1,85 @@
+@use "../../scss/mixins";
+@use "../../scss/variables" as vars;
+@include mixins.main-content-generic();
+
+.course-info {
+    display: flex;
+    flex-direction: column;
+    color: vars.$primary-dark;
+
+    h1 {
+        font-weight: 700;
+        font-size: 2rem;
+        margin-bottom: 0.8em;
+        margin-left: 0.2em;
+    }
+
+    .course-info-container {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        box-sizing: border-box;
+        padding: 3rem;
+        margin-bottom: 2.7rem;
+        border: 1px solid vars.$primary-grey;
+        border-radius: 5px;
+
+        h2 {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1em;
+            width: 100%;
+        }
+
+        .course-info-content {
+            display: flex;
+
+            .left-side {
+                align-self: flex-start;
+                // flex: auto 0 300px;
+                min-width: 300px;
+            }
+
+            .right-side {
+                display: flex;
+                flex: 1 0 500px;
+                justify-content: center;
+                // align-items: center;
+
+                .division-line {
+                    background-color: vars.$primary-grey;
+                    width: 2px;
+                    height: 200px;
+                    margin-left: 2rem;
+                }
+
+
+                ul {
+                    display: flex;
+                    justify-content: space-between;
+                    flex-direction: column;
+                    // row-gap: 1.5em;
+                    list-style: none;
+
+                    li {
+                        line-height: 2rem;
+                        margin-left: 1.8rem;
+                    }
+
+                }
+
+                .courses-info-labels {
+                    b {
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+
+        }
+
+        button {
+            align-self: flex-end;
+        }
+    }
+
+}
