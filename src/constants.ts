@@ -3,6 +3,8 @@ export const LOGIN_BUTTON_TEXT = 'LOGIN';
 export const SHOW_COURSE_TEXT = 'SHOW COURSE';
 export const ADD_NEW_COURSE_TEXT = 'ADD NEW COURSE';
 export const BACK_TEXT = 'BACK';
+export const INPUT_SEARCHBAR_TEXT = 'Input Text';
+export const SEARCH_BUTTON_TEXT = 'SEARCH';
 
 export const mockedCoursesList = [
     {

@@ -2,6 +2,11 @@
 
 @include mixins.main-content-generic();
 
+.courses-action-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .courses-list {
     list-style: none;
     display: flex;
