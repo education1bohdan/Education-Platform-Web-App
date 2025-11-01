@@ -4,7 +4,7 @@ import getCourseDuration from "../helpers/getCourseDuration";
 import getAuthorsNames from '../helpers/getAuthorsNames';
 import './Courses.scss';
 
-interface Courses {
+export interface Courses {
     id: string;
     title: string;
     description: string;
@@ -17,7 +17,7 @@ export interface Authors {
     id: string;
     name: string;
 }
-interface Props {
+export interface Props {
     coursesList: Courses[];
     authorsList: Authors[];
 }
