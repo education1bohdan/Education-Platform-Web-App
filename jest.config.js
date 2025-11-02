@@ -15,13 +15,14 @@ export default {
     "css"
   ],
   reporters: [
-      ["jest-xunit", { "filename": "xunit.xml" }] // We can't pass options from CLI
+    ["jest-xunit", { "filename": "xunit.xml" }] // We can't pass options from CLI
   ],
   clearMocks: true,
   transform: {
     "\\.[jt]sx?$": "babel-jest",
     "^.+\\.css$": "jest-transform-css",
     "^.+\\.svg$": "jest-transform-stub",
+    "^.+\\.(png|jpg|jpeg|gif)$": "jest-transform-stub",
   },
 
   transformIgnorePatterns: [

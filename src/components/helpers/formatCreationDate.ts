@@ -1,7 +1,9 @@
-export default function formatCreationDate(data: string): string {
+function formatCreationDate(data: string): string {
     return data.replace(/\//g, ".");
 }
 
+
+export default formatCreationDate;
 // import { mockedCoursesList } from "../../constants";
 
 // type Course = {

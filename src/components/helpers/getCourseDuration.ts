@@ -1,4 +1,4 @@
-export default function getCourseDuration(data: number): string {
+function getCourseDuration(data: number): string {
     let m: number = data % 60;
     let h: number = (data - m) / 60;
 
@@ -7,3 +7,5 @@ export default function getCourseDuration(data: number): string {
 
     return h === 1 ? `${hh}:${mm} hour` : `${hh}:${mm} hours`
 }
+
+export default getCourseDuration;
