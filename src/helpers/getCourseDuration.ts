@@ -9,4 +9,3 @@ function getCourseDuration(data: number): string {
 }
 
 export default getCourseDuration;
-export { getCourseDuration };

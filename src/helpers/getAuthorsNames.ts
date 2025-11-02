@@ -1,4 +1,4 @@
-import { Authors } from '../../components/Courses/Courses'
+import { Authors } from '../components/Courses/Courses'
 
 export default function getAuthorsNames(authors: string[], authorsList: Authors[]): string[] {
     return authors

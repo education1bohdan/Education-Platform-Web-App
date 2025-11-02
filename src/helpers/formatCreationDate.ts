@@ -3,4 +3,3 @@ function formatCreationDate(data: string): string {
 }
 
 export default formatCreationDate;
-export { formatCreationDate };

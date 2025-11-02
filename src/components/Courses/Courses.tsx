@@ -1,7 +1,7 @@
 import CourseCard from './components/CourseCard/CourseCard';
-import formatCreationDate from '../helpers/formatCreationDate';
-import getCourseDuration from '../helpers/getCourseDuration';
-import getAuthorsNames from '../helpers/getAuthorsNames';
+import formatCreationDate from '../../helpers/formatCreationDate';
+import getCourseDuration from '../../helpers/getCourseDuration';
+import getAuthorsNames from '../../helpers/getAuthorsNames';
 import SearchBar from './components/SearchBar/SearchBar';
 import Button from '../../common/Button/Button';
 import { ADD_NEW_COURSE_TEXT } from '../../constants';
