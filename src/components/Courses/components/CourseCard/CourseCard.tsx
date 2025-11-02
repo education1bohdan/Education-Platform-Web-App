@@ -19,16 +19,16 @@ const CourseCard: React.FC<Props> = ({ title = "Course Title", description = "Co
 
     return (<div className="course-card">
         <div className="side-line"></div>
-        <h2>{title}</h2>
+        <h2>Course Title</h2>
         <div className="course-container">
             <div className="left-side">
-                <p>{description}</p>
+                <p>Course Description</p>
             </div>
             <div className="right-side">
                 <ul className='course-info-list'>
-                    <li><b>Authors: </b>{authors}</li>
-                    <li><b>Duration: </b>{duration}</li>
-                    <li><b>Created: </b>{creationDate}</li>
+                    <li><b>Authors: </b>name2, name3</li>
+                    <li><b>Duration: </b>01:00 hour</li>
+                    <li><b>Created: </b>01.01.2025</li>
                 </ul>
 
                 <Button buttonText={SHOW_COURSE_TEXT} clickHandler={handleClick} buttonWidth={'180px'} />
