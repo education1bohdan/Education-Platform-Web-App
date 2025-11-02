@@ -29,6 +29,10 @@ export default {
     "node_modules/(?!(hex-rgb))"
   ],
 
+  moduleNameMapper: {
+    "\\.(css|less|sass|scss)$": "identity-obj-proxy"
+  },
+
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",
 };
