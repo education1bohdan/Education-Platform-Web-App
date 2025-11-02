@@ -14,12 +14,12 @@ const CourseInfo: React.FC<Props> = ({ id = "df32994e-b23d-497c-9e4d-84e4dc02882
     return (
         <div className='main-content'>
             <div className="course-info">
-                <h1>{title}</h1>
+                <h1>Course 1</h1>
                 <div className="course-info-container">
                     <h2>Description:</h2>
                     <div className="course-info-content">
                         <div className="left-side">
-                            <p>{description}</p>
+                            <p>Course 1 description</p>
                         </div>
                         <div className="right-side">
                             <div className="division-line"></div>
@@ -30,10 +30,10 @@ const CourseInfo: React.FC<Props> = ({ id = "df32994e-b23d-497c-9e4d-84e4dc02882
                                 <li><b>Authors:</b></li>
                             </ul>
                             <ul className="courses-info-details">
-                                <li>{id}</li>
-                                <li><b>{firstPart}</b> {secondPart}</li>
-                                <li>{creationDate}</li>
-                                <li>{authors}</li>
+                                <li>df32994e-b23d-497c-9e4d-84e4dc02882f</li>
+                                <li>60</li>
+                                <li>01/01/2025</li>
+                                <li>Vasiliy Dobkin, Nicolas Kim</li>
                             </ul>
                         </div>
                     </div>
