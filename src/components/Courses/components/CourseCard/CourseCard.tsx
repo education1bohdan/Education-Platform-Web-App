@@ -11,7 +11,7 @@ export interface Props {
     authors: string;
 }
 
-const CourseCard: React.FC<Props> = ({ title = "Course Title", description = "Course Description", creationDate = "01.01.2025", duration = "01:00 hour", authors = "name2, name3" }) => {
+const CourseCard: React.FC<Props> = ({ title, description, creationDate, duration, authors }) => {
 
     function handleClick(): void {
 
@@ -19,16 +19,16 @@ const CourseCard: React.FC<Props> = ({ title = "Course Title", description = "Co
 
     return (<div className="course-card">
         <div className="side-line"></div>
-        <h2>Course Title</h2>
+        <h2>{title}</h2>
         <div className="course-container">
             <div className="left-side">
-                <p>Course Description</p>
+                <p>{description}</p>
             </div>
             <div className="right-side">
                 <ul className='course-info-list'>
-                    <li><b>Authors: </b>name2, name3</li>
-                    <li><b>Duration: </b>01:00 hour</li>
-                    <li><b>Created: </b>01.01.2025</li>
+                    <li><b>Authors: </b>{authors}</li>
+                    <li><b>Duration: </b>{duration}</li>
+                    <li><b>Created: </b>{creationDate}</li>
                 </ul>
 
                 <Button buttonText={SHOW_COURSE_TEXT} clickHandler={handleClick} buttonWidth={'180px'} />
