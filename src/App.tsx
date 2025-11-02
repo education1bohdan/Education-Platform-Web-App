@@ -15,13 +15,13 @@ function App() {
         ? <EmptyCourseList />
         : <Courses coursesList={mockedCoursesList} authorsList={mockedAuthorsList} />
       }
-      {/* <CourseInfo
+      <CourseInfo
         id={mockedCoursesList[0].id}
         title={mockedCoursesList[0].title}
         description={mockedCoursesList[0].description}
         creationDate={mockedCoursesList[0].creationDate}
         duration='02:40 hours'
-        authors='Vasiliy Dobkin, Nicolas Kim' /> */}
+        authors='Vasiliy Dobkin, Nicolas Kim' />
     </div>
   );
 }
