@@ -11,7 +11,7 @@ export interface Props {
     authors: string;
 }
 
-const CourseCard: React.FC<Props> = ({ title = "Course Title", description = "Course Description", creationDate = "01/01/2025", duration = "60", authors = "Vasiliy Dobkin, Nicolas Kim" }) => {
+const CourseCard: React.FC<Props> = ({ title = "Course Title", description = "Course Description", creationDate = "01.01.2025", duration = "01:00 hour", authors = "name2, name3" }) => {
 
     function handleClick(): void {
 

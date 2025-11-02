@@ -31,9 +31,9 @@ const CourseInfo: React.FC<Props> = ({ id = "df32994e-b23d-497c-9e4d-84e4dc02882
                             </ul>
                             <ul className="courses-info-details">
                                 <li>df32994e-b23d-497c-9e4d-84e4dc02882f</li>
-                                <li>60</li>
-                                <li>01/01/2025</li>
-                                <li>Vasiliy Dobkin, Nicolas Kim</li>
+                                <li>01:00 hour</li>
+                                <li>01.01.2025</li>
+                                <li>name2, name3</li>
                             </ul>
                         </div>
                     </div>
