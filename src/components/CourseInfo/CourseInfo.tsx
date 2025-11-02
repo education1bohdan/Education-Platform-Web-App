@@ -3,7 +3,7 @@ import { BACK_TEXT } from "../../constants";
 import "./CourseInfo.scss";
 import { Props } from "../Courses/components/CourseCard/CourseCard";
 
-const CourseInfo: React.FC<Props> = ({ id, title = "Course 1", description = "Course 1 description", creationDate = "01/01/2025", duration = "60", authors = "Vasiliy Dobkin, Nicolas Kim" }) => {
+const CourseInfo: React.FC<Props> = ({ id, title = "Course 1", description = "Course 1 description", creationDate = "01/01/2025", duration = 60, authors = "Vasiliy Dobkin, Nicolas Kim" }) => {
     const durationText: string = duration;
     const [firstPart, secondPart] = durationText.split(' ');
 
