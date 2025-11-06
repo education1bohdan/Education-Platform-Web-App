@@ -1,0 +1,16 @@
+@use "../../scss/mixins";
+
+@include mixins.main-content-generic();
+
+.courses-action-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.courses-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    margin: 2rem 0;
+}

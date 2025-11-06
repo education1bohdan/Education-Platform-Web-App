@@ -1,0 +1,15 @@
+@use "../../scss/variables" as vars;
+
+input {
+    border: 2px solid vars.$primary-grey;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 1em;
+    outline: none;
+    color: vars.$primary-dark;
+
+    &:focus {
+        border: 2px solid vars.$primary-dark;
+    }
+
+}
