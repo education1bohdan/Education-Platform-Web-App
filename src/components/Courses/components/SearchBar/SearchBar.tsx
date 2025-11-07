@@ -11,7 +11,7 @@ const SearchBar: React.FC = () => {
 
     return (
         <div className="search-bar">
-            <Input className='search-bar-imput' placeholderText={INPUT_SEARCHBAR_TEXT} />
+            <Input className='search-bar-input' placeholderText={INPUT_SEARCHBAR_TEXT} />
             <Button buttonText={SEARCH_BUTTON_TEXT} clickHandler={handleSearch} buttonWidth="148px" />
         </div>
     )
