@@ -2,8 +2,9 @@ import Header from "./components/Header/Header";
 import Courses from "./components/Courses/Courses";
 import EmptyCourseList from "./components/EmptyCourseList/EmptyCourseList";
 import CourseInfo from "./components/CourseInfo/CourseInfo";
+import Registration from "./components/Registration/Registration";
 import { mockedCoursesList, mockedAuthorsList } from "./constants";
-import "./App.scss"
+import "./App.scss";
 
 let isEmpty = false;
 
@@ -11,10 +12,10 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      {isEmpty
+      {/* {isEmpty
         ? <EmptyCourseList />
         : <Courses coursesList={mockedCoursesList} authorsList={mockedAuthorsList} />
-      }
+      } */}
       {/* <CourseInfo
         id={mockedCoursesList[0].id}
         title={mockedCoursesList[0].title}
@@ -22,6 +23,8 @@ function App() {
         creationDate={mockedCoursesList[0].creationDate}
         duration='02:40 hours'
         authors='Vasiliy Dobkin, Nicolas Kim' /> */}
+
+      <Registration></Registration>
     </div>
   );
 }

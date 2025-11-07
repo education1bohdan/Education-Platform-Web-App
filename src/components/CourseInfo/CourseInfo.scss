@@ -1,6 +1,6 @@
 @use "../../scss/mixins";
 @use "../../scss/variables" as vars;
-@include mixins.main-content-generic();
+// @include mixins.main-content-generic();
 
 .course-info {
     display: flex;

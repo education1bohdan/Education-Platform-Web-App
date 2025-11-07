@@ -1,15 +1,31 @@
 @use "../../scss/variables" as vars;
 
-input {
-    border: 2px solid vars.$primary-grey;
-    border-radius: 5px;
-    box-sizing: border-box;
-    padding: 1em;
-    outline: none;
-    color: vars.$primary-dark;
+.input-container {
+    display: flex;
+    flex-direction: column;
 
-    &:focus {
-        border: 2px solid vars.$primary-dark;
+    input {
+        border: 0.125em solid vars.$primary-grey;
+        border-radius: 5px;
+        box-sizing: border-box;
+        padding: 1em;
+        outline: none;
+        color: vars.$primary-dark;
+
+        &:focus {
+            border: 2px solid vars.$primary-dark;
+        }
+
+        &::placeholder {
+            font-size: 1rem;
+            color: vars.$primary-grey;
+        }
+
+    }
+
+    label {
+        color: vars.$primary-dark;
+        font-weight: 700;
     }
 
 }

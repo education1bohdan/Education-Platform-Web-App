@@ -1,7 +1,7 @@
 @use "../../scss/mixins";
 @use "../../scss/variables" as vars;
 
-@include mixins.main-content-generic();
+// @include mixins.main-content-generic();
 
 .empty-list {
     display: flex;
