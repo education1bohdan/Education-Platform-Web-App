@@ -24,9 +24,15 @@
             align-items: center;
             row-gap: 1.5rem;
 
+            .input-container {}
+
             p {
                 margin-top: 1rem;
                 align-self: center;
+            }
+
+            button {
+                margin-top: 1rem;
             }
         }
     }

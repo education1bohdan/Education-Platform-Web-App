@@ -1,5 +1,6 @@
 export const LOGOUT_BUTTON_TEXT = 'LOGOUT';
 export const LOGIN_BUTTON_TEXT = 'LOGIN';
+export const SIGNUP_BUTTON_TEXT = 'SIGN UP'
 export const SHOW_COURSE_TEXT = 'SHOW COURSE';
 export const ADD_NEW_COURSE_TEXT = 'ADD NEW COURSE';
 export const BACK_TEXT = 'BACK';
