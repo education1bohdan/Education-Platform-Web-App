@@ -24,7 +24,7 @@ const Registration: React.FC = () => {
         password: '',
     });
 
-    const [formErrors, setFormErrors] = useState({});
+    const [formErrors, setFormErrors] = useState<ErrorsObject>({});
 
     function validateForm<T>(object: T): T | {} {
         const errorsObject: ErrorsObject = {};
@@ -69,15 +69,15 @@ const Registration: React.FC = () => {
             <form onSubmit={handleLogin}>
                 <div className='registration-form'>
                     <div className="input-container">
-                        <Input inputType='text' name='name' placeholderText='Input text' labelText='Name' inputWidth='286px' onChange={handleChange} value={formData.name} />
+                        <Input hasError={formErrors.name ? true : false} inputType='text' name='name' placeholderText='Input text' labelText='Name' inputWidth='286px' onChange={handleChange} value={formData.name} />
                         {formErrors.name && <p>{formErrors.name}</p>}
                     </div>
                     <div className="input-container">
-                        <Input inputType='email' name='email' placeholderText='Input text' labelText='Email' inputWidth='286px' onChange={handleChange} value={formData.email} />
+                        <Input hasError={formErrors.email ? true : false} inputType='email' name='email' placeholderText='Input text' labelText='Email' inputWidth='286px' onChange={handleChange} value={formData.email} />
                         {formErrors.email && <p>{formErrors.email}</p>}
                     </div>
                     <div className="input-container">
-                        <Input inputType='password' name='password' placeholderText='Input text' labelText='Password' inputWidth='286px' onChange={handleChange} value={formData.password} />
+                        <Input hasError={formErrors.password ? true : false} inputType='password' name='password' placeholderText='Input text' labelText='Password' inputWidth='286px' onChange={handleChange} value={formData.password} />
                         {formErrors.password && <p>{formErrors.password}</p>}
                     </div>
                     <Button type='submit' buttonWidth='286px' buttonText={SIGNUP_BUTTON_TEXT} />
