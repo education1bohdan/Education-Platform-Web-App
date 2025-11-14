@@ -1,0 +1,50 @@
+@use '../../scss/variables' as vars;
+
+.registration-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: vars.$primary-dark;
+
+    form {
+        width: 585px;
+        margin-top: 2rem;
+        border: 1px solid vars.$primary-grey;
+        border-radius: 4px;
+        background-color: #fff;
+        box-sizing: border-box;
+        padding: 4rem;
+        margin-bottom: 3.5rem;
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            row-gap: 1.5rem;
+
+            //     .input-container {
+            //         .error-paragraph {
+            //             color: vars.$error-color;
+            //         }
+
+            // }
+
+            p {
+                margin-top: 1rem;
+                align-self: center;
+
+                a {
+                    text-decoration: none;
+                    color: vars.$primary-dark;
+                }
+            }
+
+            button {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+}

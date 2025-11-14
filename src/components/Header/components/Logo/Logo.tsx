@@ -1,8 +1,9 @@
 import logoImage from '../../../../assets/logo.png';
-import './Logo.scss'
+import './Logo.scss';
+import { Link } from 'react-router-dom';
 
 const Logo: React.FC<{}> = () => {
-    return (<img src={logoImage} alt='Logo'></img>);
+    return (<Link to="/"><img src={logoImage} alt='Logo'></img></Link>);
 }
 
 export default Logo;

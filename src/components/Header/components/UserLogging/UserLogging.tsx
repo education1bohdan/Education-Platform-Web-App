@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { LOGOUT_BUTTON_TEXT } from '../../../../constants.ts';
 import { LOGIN_BUTTON_TEXT } from '../../../../constants.ts';
 import Button from '../../../../common/Button/Button.tsx';
@@ -8,12 +9,10 @@ const UserLogout: React.FC = () => {
     const [isLogged, setLogging] = useState(false);
 
     const handleLogin = () => {
-        alert('Login clicked!');
         setLogging(true)
     }
 
     const handleLogout = () => {
-        alert('Logout clicked!');
         setLogging(false)
     }
 
@@ -22,10 +21,11 @@ const UserLogout: React.FC = () => {
             {isLogged ? (
                 <>
                     <p>Test Name</p>
-                    <Button buttonText={LOGOUT_BUTTON_TEXT} clickHandler={handleLogout} />
+                    <Button buttonText={LOGOUT_BUTTON_TEXT} />
                 </>
             ) :
-                (<Button buttonText={LOGIN_BUTTON_TEXT} clickHandler={handleLogin} />)}
+                (<Link to="/registration"><Button buttonText={LOGIN_BUTTON_TEXT} /></Link>)
+            }
 
         </div>
 

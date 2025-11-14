@@ -1,31 +1,38 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Courses from "./components/Courses/Courses";
 import EmptyCourseList from "./components/EmptyCourseList/EmptyCourseList";
 import CourseInfo from "./components/CourseInfo/CourseInfo";
-import Registration from "./components/Registration/Registration";
+import Authentification from "./components/Authentification/Authentification";
+import Registration from "./components/Authentification/Registration/Registration";
+import Login from "./components/Authentification/Login/Login"
 import { mockedCoursesList, mockedAuthorsList } from "./constants";
 import "./App.scss";
 
 let isEmpty = false;
+let isAuth = false;
 
 function App() {
   return (
-    <div className='App'>
-      <Header />
-      {/* {isEmpty
-        ? <EmptyCourseList />
-        : <Courses coursesList={mockedCoursesList} authorsList={mockedAuthorsList} />
-      } */}
-      {/* <CourseInfo
-        id={mockedCoursesList[0].id}
-        title={mockedCoursesList[0].title}
-        description={mockedCoursesList[0].description}
-        creationDate={mockedCoursesList[0].creationDate}
-        duration='02:40 hours'
-        authors='Vasiliy Dobkin, Nicolas Kim' /> */}
+    <Router>
+      <div className='App'>
+        <Header />
+        <Routes>
+          <Route path="/" element={isEmpty ? <EmptyCourseList /> : <Courses coursesList={mockedCoursesList} authorsList={mockedAuthorsList} />} />
+          <Route path="/courseinfo" element={<CourseInfo
+            id={mockedCoursesList[0].id}
+            title={mockedCoursesList[0].title}
+            description={mockedCoursesList[0].description}
+            creationDate={mockedCoursesList[0].creationDate}
+            duration='02:40 hours'
+            authors='Vasiliy Dobkin, Nicolas Kim' />} />
+          <Route path="/login" element={!isAuth && <Login />} />
+          <Route path="/registration" element={!isAuth && <Registration />} />
 
-      <Registration></Registration>
-    </div>
+        </Routes>
+
+      </div >
+    </Router>
   );
 }
 

@@ -7,6 +7,7 @@
     padding: 1em;
     outline: none;
     color: vars.$primary-dark;
+    font-size: 1rem;
 
     &:focus {
         border: 2px solid vars.$primary-dark;
@@ -19,5 +20,9 @@
 }
 
 .error {
-    border-color: #FF0000;
+    border: 2px solid vars.$error-color;
+}
+
+.errorMessage {
+    color: vars.$error-color;
 }
