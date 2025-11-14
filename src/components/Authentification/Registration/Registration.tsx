@@ -45,6 +45,11 @@ const Registration = () => {
         const { name, value } = event.target;
         setFormData(prev => ({ ...prev, [name]: value }));
 
+        setFormErrors(prev => {
+            const newErrors = { ...prev };
+            delete newErrors[name];
+            return newErrors;
+        });
     }
 
     const handleRegistration = (event: React.FormEvent<HTMLFormElement>): void => {

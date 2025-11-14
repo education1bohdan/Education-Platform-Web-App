@@ -20,7 +20,11 @@
 }
 
 .error {
-    border: 2px solid vars.$error-color;
+    border: 1px solid vars.$error-color;
+
+    &:focus {
+        border: 2px solid vars.$error-color;
+    }
 }
 
 .errorMessage {
