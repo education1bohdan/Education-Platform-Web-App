@@ -15,7 +15,7 @@ interface Props {
     errorMessage?: string;
 }
 
-const Input: React.FC<Props> = ({ hasError = false, inputType = 'text', name, placeholderText, labelText, inputWidth = '400px', inputHeight = '50px', onChange, value, errorMessage }) => {
+const Input: React.FC<Props> = ({ hasError = false, inputType = 'text', name, placeholderText = 'Input text', labelText, inputWidth = '400px', inputHeight = '50px', onChange, value, errorMessage }) => {
     const uniqueId = useId();
     const inputClasses = `${styles.input} ${hasError && styles.error}`;
     const pClasses = `${styles.errorMessage}`;

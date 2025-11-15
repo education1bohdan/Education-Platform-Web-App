@@ -1,0 +1,31 @@
+import { useId } from 'react';
+// import styles from './TextArea.module.scss';
+
+interface Props {
+    hasError?: boolean;
+    inputType?: string;
+    name?: string;
+    placeholderText?: string;
+    labelText?: string;
+    inputWidth?: string;
+    inputHeight?: string;
+    onChange?: React.ChangeEventHandler<HTMLInputElement>;
+    value?: string;
+    errorMessage?: string;
+}
+
+const TextArea: React.FC<Props> = ({ hasError = false, inputType = 'text', name, placeholderText = 'Input text', labelText, inputWidth = '400px', inputHeight = '50px', onChange, value, errorMessage }) => {
+    // const uniqueId = useId();
+    // const inputClasses = `${styles.input} ${hasError && styles.error}`;
+    // const pClasses = `${styles.errorMessage}`;
+    return (
+        <div className='textarea-container'>
+            {/* <label htmlFor={uniqueId}>{labelText}</label>
+            <input id={uniqueId} className={inputClasses} type={inputType} name={name} placeholder={placeholderText} onChange={onChange} value={value} style={{ width: inputWidth, height: inputHeight }} />
+            {hasError && <p className={pClasses}>{errorMessage}</p>} */}
+        </div>
+    );
+
+}
+
+export default TextArea;
