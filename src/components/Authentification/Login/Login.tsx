@@ -3,15 +3,18 @@ import Input from "../../../common/Input/Input";
 import { LOGIN_BUTTON_TEXT } from "../../../constants";
 import { useState } from "react";
 
+import validateForm from "../../../helpers/validateForm";
+
 interface FormData {
     email: string;
     password: string;
+    [key: string]: string;
 }
 
 interface ErrorsObject {
-    name?: string;
     email?: string;
     password?: string;
+    [key: string]: string | undefined;
 }
 
 const Login = () => {
@@ -24,30 +27,17 @@ const Login = () => {
 
     const [formErrors, setFormErrors] = useState<ErrorsObject>({});
 
-    function validateForm<T>(object: T): ErrorsObject | {} {
-        const errorsObject: ErrorsObject = {};
-
-        for (let key in object) {
-
-            const inputName = key.charAt(0).toUpperCase() + key.slice(1);
-
-            if (!object[key]) {
-                errorsObject[key] = `${inputName} is required`;
-            }
-        }
-        return errorsObject;
-    }
-
-
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = event.target;
         setFormData(prev => ({ ...prev, [name]: value }));
 
-        setFormErrors(prev => {
-            const newErrors = { ...prev };
-            delete newErrors[name];
-            return newErrors;
-        });
+        if (value.trim()) {
+            setFormErrors(prev => {
+                const newErrors = { ...prev };
+                delete newErrors[name];
+                return newErrors;
+            });
+        }
     }
 
     const handleLogin = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -59,11 +49,12 @@ const Login = () => {
 
         if (Object.keys(validationErrors).length === 0) {
             setFormData({
-                password: '',
                 email: '',
+                password: '',
             });
         }
     }
+
 
     return (
         <Authentification title="Login" buttonText={LOGIN_BUTTON_TEXT} handler={handleLogin} linkPath='/registration' stylingClass={'registration-login'} reference='Sign Up'>

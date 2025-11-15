@@ -2,15 +2,16 @@ import Authentification from "../Authentification";
 import Input from "../../../common/Input/Input";
 import { SIGNUP_BUTTON_TEXT } from "../../../constants";
 import { useState } from "react";
+import validateForm from "../../../helpers/validateForm";
 
-interface FormData {
+export interface FormData {
     name: string;
     email: string;
     password: string;
     [key: string]: string;
 }
 
-interface ErrorsObject {
+export interface ErrorsObject {
     name?: string;
     email?: string;
     password?: string;
@@ -28,30 +29,17 @@ const Registration = () => {
 
     const [formErrors, setFormErrors] = useState<ErrorsObject>({});
 
-    function validateForm<T extends Record<string, string>>(object: T): ErrorsObject | {} {
-        const errorsObject: Partial<Record<keyof T, string>> = {};
-
-        for (let key in object) {
-
-            const inputName = key.charAt(0).toUpperCase() + key.slice(1);
-
-            if (!object[key].trim()) {
-                errorsObject[key] = `${inputName} is required`;
-            }
-        }
-        return errorsObject;
-    }
-
-
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = event.target;
         setFormData(prev => ({ ...prev, [name]: value }));
 
-        setFormErrors(prev => {
-            const newErrors = { ...prev };
-            delete newErrors[name];
-            return newErrors;
-        });
+        if (value.trim()) {
+            setFormErrors(prev => {
+                const newErrors = { ...prev };
+                delete newErrors[name];
+                return newErrors;
+            });
+        }
     }
 
     const handleRegistration = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -64,8 +52,8 @@ const Registration = () => {
         if (Object.keys(validationErrors).length === 0) {
             setFormData({
                 name: '',
-                password: '',
                 email: '',
+                password: '',
             });
         }
     }
