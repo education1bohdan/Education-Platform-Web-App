@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { LOGOUT_BUTTON_TEXT } from '../../../../constants.ts';
 import { LOGIN_BUTTON_TEXT } from '../../../../constants.ts';
@@ -17,26 +16,16 @@ const UserLogout: React.FC = () => {
         setLogging(false)
     }
 
-    const location = useLocation();
-
-    const hideHeaderPaths = ["/login", "/registration"];
-
-    const shouldHideHeader = hideHeaderPaths.includes(location.pathname);
-
     return (
         <div className='logging-container'>
-
-            {!shouldHideHeader && (isLogged ? (
+            {(isLogged ? (
                 <>
                     <p>Test Name</p>
                     <Button buttonText={LOGOUT_BUTTON_TEXT} />
                 </>
             ) :
                 (<Link to="/login"><Button buttonText={LOGIN_BUTTON_TEXT} /></Link>))}
-
-
         </div>
-
     )
 }
 

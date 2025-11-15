@@ -3,9 +3,10 @@ import Header from "./components/Header/Header";
 import Courses from "./components/Courses/Courses";
 import EmptyCourseList from "./components/EmptyCourseList/EmptyCourseList";
 import CourseInfo from "./components/CourseInfo/CourseInfo";
-import Authentification from "./components/Authentification/Authentification";
 import Registration from "./components/Authentification/Registration/Registration";
-import Login from "./components/Authentification/Login/Login"
+import Login from "./components/Authentification/Login/Login";
+import AuthorItem from "./components/CreateCourse/AuthorItem/AuthorItem";
+import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { mockedCoursesList, mockedAuthorsList } from "./constants";
 import "./App.scss";
 
@@ -28,7 +29,8 @@ function App() {
             authors='Vasiliy Dobkin, Nicolas Kim' />} />
           <Route path="/login" element={!isAuth && <Login />} />
           <Route path="/registration" element={!isAuth && <Registration />} />
-
+          <Route path="/author-item" element={<AuthorItem authorName='Author One' />} />
+          <Route path="/create-course" element={< CreateCourse />} />
         </Routes>
 
       </div >

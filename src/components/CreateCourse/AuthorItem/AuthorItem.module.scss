@@ -1,0 +1,22 @@
+@use '../../../scss/variables' as vars;
+
+.authorItemWrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5em;
+    color: vars.$primary-dark;
+
+    img {
+        cursor: pointer;
+    }
+
+    .plus {
+        width: 8px;
+        height: fit-content;
+    }
+
+    .trashBin {
+        width: 12px;
+        height: fit-content;
+    }
+}

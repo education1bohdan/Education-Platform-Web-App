@@ -1,0 +1,32 @@
+@use '../../scss/variables' as vars;
+
+.createCourse {
+    display: flex;
+    flex-direction: column;
+    color: vars.$primary-dark;
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    form {
+        background-color: #fff;
+        border: 1px solid vars.$primary-grey;
+        border-radius: 4px;
+        box-sizing: border-box;
+        padding: 4rem;
+
+        label {
+            font-size: 14px;
+        }
+
+        .mainInfo {
+            display: flex;
+            flex-direction: column;
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}

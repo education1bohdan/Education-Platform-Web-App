@@ -6,7 +6,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import Button from '../../common/Button/Button';
 import { ADD_NEW_COURSE_TEXT } from '../../constants';
 import './Courses.scss';
-
+import { Link } from 'react-router-dom';
 export interface Courses {
     id: string;
     title: string;
@@ -35,7 +35,7 @@ const Courses: React.FC<Props> = ({ coursesList, authorsList }) => {
         <div className='main-content'>
             <div className="courses-action-container">
                 <SearchBar />
-                <Button buttonText={ADD_NEW_COURSE_TEXT} clickHandler={addNewCourseHandler} buttonWidth={'183px'} />
+                <Link to='/create-course'><Button buttonText={ADD_NEW_COURSE_TEXT} clickHandler={addNewCourseHandler} buttonWidth={'183px'} /></Link>
             </div>
             <ul className='courses-list'>
                 {coursesList.map(({ id, title, description, creationDate, duration, authors }, index) => {
