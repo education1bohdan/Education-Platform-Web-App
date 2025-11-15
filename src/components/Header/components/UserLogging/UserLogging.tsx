@@ -24,7 +24,7 @@ const UserLogout: React.FC = () => {
                     <Button buttonText={LOGOUT_BUTTON_TEXT} />
                 </>
             ) :
-                (<Link to="/registration"><Button buttonText={LOGIN_BUTTON_TEXT} /></Link>)
+                (<Link to="/login"><Button buttonText={LOGIN_BUTTON_TEXT} /></Link>)
             }
 
         </div>

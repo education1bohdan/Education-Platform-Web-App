@@ -26,7 +26,7 @@ const Authentification: React.FC<AuthProps> = ({ children, title, buttonText, ha
                 <div className={styles['form-container']}>
                     {children}
                     <Button type='submit' buttonWidth='286px' buttonText={buttonText} />
-                    <p>If you have an account you may <Link to={linkPath}><strong>{reference}</strong></Link></p>
+                    <p className={styles['login-registration-link']}>If you have an account you may <Link to={linkPath}><strong>{reference}</strong></Link></p>
                 </div>
             </form>
         </div>

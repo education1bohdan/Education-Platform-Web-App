@@ -7,12 +7,14 @@ interface FormData {
     name: string;
     email: string;
     password: string;
+    [key: string]: string;
 }
 
 interface ErrorsObject {
     name?: string;
     email?: string;
     password?: string;
+    [key: string]: string | undefined;
 }
 
 const Registration = () => {
@@ -26,14 +28,14 @@ const Registration = () => {
 
     const [formErrors, setFormErrors] = useState<ErrorsObject>({});
 
-    function validateForm<T>(object: T): ErrorsObject | {} {
-        const errorsObject: ErrorsObject = {};
+    function validateForm<T extends Record<string, string>>(object: T): ErrorsObject | {} {
+        const errorsObject: Partial<Record<keyof T, string>> = {};
 
         for (let key in object) {
 
             const inputName = key.charAt(0).toUpperCase() + key.slice(1);
 
-            if (!object[key]) {
+            if (!object[key].trim()) {
                 errorsObject[key] = `${inputName} is required`;
             }
         }

@@ -29,4 +29,6 @@
 
 .errorMessage {
     color: vars.$error-color;
+    position: absolute;
+    top: 100%;
 }

@@ -43,6 +43,11 @@ const Login = () => {
         const { name, value } = event.target;
         setFormData(prev => ({ ...prev, [name]: value }));
 
+        setFormErrors(prev => {
+            const newErrors = { ...prev };
+            delete newErrors[name];
+            return newErrors;
+        });
     }
 
     const handleLogin = (event: React.FormEvent<HTMLFormElement>): void => {
