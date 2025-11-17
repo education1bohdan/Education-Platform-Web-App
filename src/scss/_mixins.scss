@@ -8,4 +8,43 @@
 // }
 
 
+@use './variables' as vars;
+
 @mixin primary-cards-style() {}
+
+@mixin input-text-area-style($type) {
+
+    .#{$type} {
+        border: 0.125em solid vars.$primary-grey;
+        border-radius: 5px;
+        box-sizing: border-box;
+        padding: 1em;
+        outline: none;
+        color: vars.$primary-dark;
+        font-size: 1rem;
+
+        &:focus {
+            border: 2px solid vars.$primary-dark;
+        }
+
+        &::placeholder {
+            font-size: 1rem;
+            color: vars.$primary-grey;
+        }
+    }
+
+    .error {
+        border: 1px solid vars.$error-color;
+
+        &:focus {
+            border: 2px solid vars.$error-color;
+        }
+    }
+
+    .errorMessage {
+        color: vars.$error-color;
+        position: absolute;
+        top: 100%;
+    }
+
+}
