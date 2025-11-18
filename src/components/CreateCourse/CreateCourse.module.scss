@@ -12,12 +12,13 @@
     form {
         display: grid;
         grid:
-            "main-info main-info" auto "duration course-authors-list" auto "authors course-authors-list" auto/ 1fr 1fr;
+            "main-info main-info" auto "duration course-authors-list" auto "authors course-authors-list" auto/ 70% 30%;
         background-color: #fff;
         border: 1px solid vars.$primary-grey;
         border-radius: 4px;
         box-sizing: border-box;
         padding: 3rem 5rem;
+        margin-top: 2.5rem;
         margin-bottom: 2rem;
         row-gap: 2rem;
 
