@@ -1,0 +1,15 @@
+@use '../../scss/variables' as vars;
+@use '../../scss/mixins';
+
+.text-area-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    label {
+        color: vars.$primary-dark;
+        font-weight: 700;
+    }
+
+    @include mixins.input-text-area-style(text-area);
+}
