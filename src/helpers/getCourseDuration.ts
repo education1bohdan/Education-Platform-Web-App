@@ -14,7 +14,7 @@ function getCourseDuration(value: number | string): string {
 
     if (h === 0 && m === 1) {
         return `${hh}:${mm} minute`;
-    } else if (h === 0) {
+    } else if (h === 0 && m > 0) {
         return `${hh}:${mm} minutes`;
     }
 
