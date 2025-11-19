@@ -6,10 +6,8 @@ import TextArea from '../../common/TextArea/TextArea';
 import AuthorItem from './AuthorItem/AuthorItem';
 import { CREATE_AUTHOR_TEXT, CANCEL, CREATE_COURSE } from '../../constants';
 import getCourseDuration from '../../helpers/getCourseDuration';
-import validateForm from '../../helpers/validateForm';
+import validateCreateCourse from '../../helpers/validateCreateCourse';
 import styles from './CreateCourse.module.scss';
-
-let hasError = false;
 
 interface Props {
 
@@ -44,13 +42,17 @@ const CreateCourse: React.FC<Props> = ({ }) => {
 
         setFormData(prev => ({ ...prev, [name]: value }));
 
+        setFormErrors(prev => ({ ...prev, [name]: '', }));
     }
 
     const handleChangeDuration = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>): void => {
         const { value } = event.target;
         let newValue = value;
 
+        isNaN(Number(value)) || value[value.length - 1] === ' ' ? setFormErrors(prev => ({ ...prev, duration: 'The value should be a number', })) : setFormErrors(prev => ({ ...prev, duration: '', }));
+
         newValue = value.replace(/[^0-9]/g, '');
+
 
         setFormData(prev => ({ ...prev, duration: newValue }));
 
@@ -65,22 +67,35 @@ const CreateCourse: React.FC<Props> = ({ }) => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
 
+        const validationErrors = validateCreateCourse<FormData>(formData, 2);
+
+        setFormErrors(validationErrors);
+
+        if (Object.keys(validationErrors).length === 0) {
+            setFormData({
+                title: '',
+                description: '',
+                duration: '',
+                authors: '',
+            });
+            setCourseDuration(['00:00', 'hours']);
+        }
 
     }
 
     return (
         <div className={"main-content " + styles.createCourse} >
             <h1>Course Edit/Create Page</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} id='create-course-form'>
                 <div className={styles.mainInfo}>
                     <h2>Main Info</h2>
-                    <Input hasError={hasError} errorMessage='Title is required.' inputType='text' name='title' labelText='Title' inputWidth='auto' onChange={handleChange} value={formData.title} />
-                    <TextArea hasError={hasError} errorMessage='Description is required.' name='description' placeholderText='Input Text' labelText='Description' width='auto' height='152px' resize='none' onChange={handleChange} value={formData.description}></TextArea>
+                    <Input hasError={formErrors.title ? true : false} errorMessage={formErrors.title && formErrors.title} inputType='text' name='title' labelText='Title' inputWidth='auto' onChange={handleChange} value={formData.title} />
+                    <TextArea hasError={formErrors.description ? true : false} errorMessage={formErrors.description && formErrors.description} name='description' placeholderText='Input Text' labelText='Description' width='auto' height='152px' resize='none' onChange={handleChange} value={formData.description}></TextArea>
                 </div>
                 <div className={styles.duration}>
                     <h2>Duration</h2>
                     <div className={styles['duration-input-container']}>
-                        <Input hasError={hasError} errorMessage='Duration is required.' inputType='text' name='duration' labelText='Duration' inputWidth='400px' onChange={handleChangeDuration} value={formData.duration} />
+                        <Input hasError={formErrors.duration ? true : false} errorMessage={formErrors.duration && formErrors.duration} inputType='text' name='duration' labelText='Duration' inputWidth='400px' onChange={handleChangeDuration} value={formData.duration} />
                         <div className={styles['duration-p']}>
                             <p><strong>{courseDuration[0]}</strong> {courseDuration[1]}</p>
                         </div>
@@ -89,7 +104,7 @@ const CreateCourse: React.FC<Props> = ({ }) => {
                 <div className={styles.authors}>
                     <h2>Authors</h2>
                     <div className={styles['authors-input-container']}>
-                        <Input hasError={hasError} inputType='text' name='authors' labelText='Author Name' inputWidth='400px' onChange={handleChange} value={formData.authors} />
+                        <Input hasError={formErrors.authors ? true : false} errorMessage={formErrors.authors && formErrors.authors} inputType='text' name='authors' labelText='Author Name' inputWidth='400px' onChange={handleChange} value={formData.authors} />
                         <Button buttonText={CREATE_AUTHOR_TEXT} clickHandler={handleAuthorCreation} buttonWidth="185px" />
                     </div>
                     <div className={styles['authors-list-container']}>
@@ -109,7 +124,7 @@ const CreateCourse: React.FC<Props> = ({ }) => {
             </form>
             <div className={styles['button-container']}>
                 <Link to='/'><Button buttonText={CANCEL} buttonWidth="185px" /></Link>
-                <Button type='submit' buttonText={CREATE_COURSE} buttonWidth="185px" />
+                <Button type='submit' buttonText={CREATE_COURSE} buttonWidth="185px" form='create-course-form' />
             </div>
         </div>
     )
