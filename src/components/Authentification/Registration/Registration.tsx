@@ -2,7 +2,7 @@ import Authentification from "../Authentification";
 import Input from "../../../common/Input/Input";
 import { SIGNUP_BUTTON_TEXT } from "../../../constants";
 import { useState } from "react";
-import validateForm from "../../../helpers/validateForm";
+import validateAuth from "../../../helpers/validateAuth";
 
 export interface FormData {
     name: string;
@@ -45,7 +45,7 @@ const Registration = () => {
     const handleRegistration = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
 
-        const validationErrors = validateForm<FormData>(formData);
+        const validationErrors = validateAuth<FormData>(formData);
 
         setFormErrors(validationErrors);
 

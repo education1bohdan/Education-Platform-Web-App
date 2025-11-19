@@ -3,7 +3,7 @@ import Input from "../../../common/Input/Input";
 import { LOGIN_BUTTON_TEXT } from "../../../constants";
 import { useState } from "react";
 
-import validateForm from "../../../helpers/validateForm";
+import validateAuth from "../../../helpers/validateAuth";
 
 interface FormData {
     email: string;
@@ -43,7 +43,7 @@ const Login = () => {
     const handleLogin = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
 
-        const validationErrors = validateForm<FormData>(formData);
+        const validationErrors = validateAuth<FormData>(formData);
 
         setFormErrors(validationErrors);
 
