@@ -7,7 +7,7 @@ import Button from '../../common/Button/Button';
 import { ADD_NEW_COURSE_TEXT } from '../../constants';
 import './Courses.scss';
 import { Link } from 'react-router-dom';
-export interface Courses {
+export interface Course {
     id: string;
     title: string;
     description: string;
@@ -21,7 +21,7 @@ export interface Authors {
     name: string;
 }
 export interface Props {
-    coursesList: Courses[];
+    coursesList: Course[];
     authorsList: Authors[];
 }
 

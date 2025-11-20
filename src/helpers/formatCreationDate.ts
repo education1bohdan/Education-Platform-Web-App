@@ -1,5 +1,9 @@
 function formatCreationDate(data: string): string {
-    return data.replace(/\//g, ".");
+    if (data[2] === '/') {
+        return data.replace(/\//g, ".");
+    } else {
+        return data;
+    }
 }
 
 export default formatCreationDate;

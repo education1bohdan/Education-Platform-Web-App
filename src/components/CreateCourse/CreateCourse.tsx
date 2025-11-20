@@ -8,14 +8,20 @@ import { CREATE_AUTHOR_TEXT, CANCEL, CREATE_COURSE } from '../../constants';
 import getCourseDuration from '../../helpers/getCourseDuration';
 import validateCreateCourse from '../../helpers/validateCreateCourse';
 import styles from './CreateCourse.module.scss';
+import { Course, Authors } from '../Courses/Courses';
 
 interface Props {
 
 }
+
+// export type CreatedCourse = Course[];
+
 interface formData {
-    title: string;
-    description: string;
-    duration: string;
+    id: string
+    title: string
+    description: string
+    creationDate: string
+    duration: string
     authors: string;
 }
 
@@ -26,13 +32,15 @@ export interface ErrorsObject {
     authors?: string;
 }
 
-const CreateCourse: React.FC<Props> = ({ }) => {
+const CreateCourse: React.FC<Props> = ({ handler }) => {
 
     const [courseDuration, setCourseDuration] = useState<string[]>(['00:00', 'hours']);
     const [formErrors, setFormErrors] = useState<ErrorsObject>({});
     const [formData, setFormData] = useState<formData>({
+        id: '',
         title: '',
         description: '',
+        creationDate: '',
         duration: '',
         authors: '',
     })
@@ -72,9 +80,31 @@ const CreateCourse: React.FC<Props> = ({ }) => {
         setFormErrors(validationErrors);
 
         if (Object.keys(validationErrors).length === 0) {
+
+            const today = new Date();
+
+            const day = String(today.getDate()).padStart(2, "0");
+            const month = String(today.getMonth() + 1).padStart(2, "0");
+            const year = today.getFullYear();
+
+            const date = `${day}.${month}.${year}`;
+
+            const createdCourse: Course = {
+                id: '12345',
+                title: formData.title,
+                description: formData.description,
+                creationDate: date,
+                duration: Number(formData.duration),
+                authors: ['123445', '123456'],
+            }
+            handler(createdCourse);
+
+            console.log(createdCourse)
             setFormData({
+                id: '',
                 title: '',
                 description: '',
+                creationDate: '',
                 duration: '',
                 authors: '',
             });
