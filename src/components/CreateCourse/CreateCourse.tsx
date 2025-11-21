@@ -11,18 +11,19 @@ import styles from './CreateCourse.module.scss';
 import { Course, Authors } from '../Courses/Courses';
 
 interface Props {
-
+    courseCreationHandler: (createdCourse: Course) => void;
 }
 
 // export type CreatedCourse = Course[];
 
 interface formData {
-    id: string
-    title: string
-    description: string
-    creationDate: string
-    duration: string
+    id: string;
+    title: string;
+    description: string;
+    creationDate: string;
+    duration: string;
     authors: string;
+    [key: string]: string;
 }
 
 export interface ErrorsObject {
@@ -30,9 +31,10 @@ export interface ErrorsObject {
     description?: string;
     duration?: string;
     authors?: string;
+    [key: string]: string | undefined;
 }
 
-const CreateCourse: React.FC<Props> = ({ handler }) => {
+const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
 
     const [courseDuration, setCourseDuration] = useState<string[]>(['00:00', 'hours']);
     const [formErrors, setFormErrors] = useState<ErrorsObject>({});
@@ -75,7 +77,7 @@ const CreateCourse: React.FC<Props> = ({ handler }) => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
 
-        const validationErrors = validateCreateCourse<FormData>(formData, 2);
+        const validationErrors = validateCreateCourse<formData>(formData, 2);
 
         setFormErrors(validationErrors);
 
@@ -97,7 +99,7 @@ const CreateCourse: React.FC<Props> = ({ handler }) => {
                 duration: Number(formData.duration),
                 authors: ['123445', '123456'],
             }
-            handler(createdCourse);
+            courseCreationHandler(createdCourse);
 
             console.log(createdCourse)
             setFormData({

@@ -18,7 +18,7 @@ let isAuth = false;
 function App() {
   const [courses, setCourses] = useState<Course[]>(mockedCoursesList);
 
-  const courseCreationHandler = (createdCourse: Course) => {
+  const courseCreationHandler = (createdCourse: Course): void => {
     setCourses(prev => [...prev, createdCourse]);
   }
 
@@ -38,7 +38,7 @@ function App() {
           <Route path="/login" element={!isAuth && <Login />} />
           <Route path="/registration" element={!isAuth && <Registration />} />
           <Route path="/author-item" element={<AuthorItem authorName='Author One' />} />
-          <Route path="/create-course" element={< CreateCourse handler={courseCreationHandler} />} />
+          <Route path="/create-course" element={< CreateCourse courseCreationHandler={courseCreationHandler} />} />
         </Routes>
 
       </div >
