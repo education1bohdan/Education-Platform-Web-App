@@ -3,20 +3,30 @@
 .authorItemWrapper {
     display: flex;
     align-items: center;
-    column-gap: 0.5em;
+    column-gap: 0.25em;
     color: vars.$primary-dark;
 
-    img {
-        cursor: pointer;
-    }
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 5px;
+        border: none;
+        background-color: #fff;
 
-    .plus {
-        width: 8px;
-        height: fit-content;
-    }
+        &:hover {
+            cursor: pointer;
+        }
 
-    .trashBin {
-        width: 12px;
-        height: fit-content;
+        .plus {
+            width: 8px;
+            height: fit-content;
+        }
+
+        .trashBin {
+            width: 12px;
+            height: fit-content;
+        }
     }
 }

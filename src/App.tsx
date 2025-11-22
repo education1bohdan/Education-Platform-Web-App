@@ -6,10 +6,9 @@ import EmptyCourseList from "./components/EmptyCourseList/EmptyCourseList";
 import CourseInfo from "./components/CourseInfo/CourseInfo";
 import Registration from "./components/Authentification/Registration/Registration";
 import Login from "./components/Authentification/Login/Login";
-import AuthorItem from "./components/CreateCourse/AuthorItem/AuthorItem";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { mockedCoursesList, mockedAuthorsList } from "./constants";
-import { Course } from "./components/Courses/Courses";
+import { Course, Authors } from "./components/Courses/Courses";
 import "./App.scss";
 
 let isEmpty = false;
@@ -17,9 +16,11 @@ let isAuth = false;
 
 function App() {
   const [courses, setCourses] = useState<Course[]>(mockedCoursesList);
+  const [authors, setAuthors] = useState<Authors[]>(mockedAuthorsList)
 
-  const courseCreationHandler = (createdCourse: Course): void => {
+  const courseCreationHandler = (createdCourse: Course, addedAuthors: Authors[]): void => {
     setCourses(prev => [...prev, createdCourse]);
+    setAuthors(prev => [...prev, ...addedAuthors]);
   }
 
   return (
@@ -27,7 +28,7 @@ function App() {
       <div className='App'>
         <Header />
         <Routes>
-          <Route path="/" element={isEmpty ? <EmptyCourseList /> : <Courses coursesList={courses} authorsList={mockedAuthorsList} />} />
+          <Route path="/" element={isEmpty ? <EmptyCourseList /> : <Courses coursesList={courses} authorsList={authors} />} />
           <Route path="/courseinfo" element={<CourseInfo
             id={mockedCoursesList[0].id}
             title={mockedCoursesList[0].title}
@@ -37,7 +38,6 @@ function App() {
             authors='Vasiliy Dobkin, Nicolas Kim' />} />
           <Route path="/login" element={!isAuth && <Login />} />
           <Route path="/registration" element={!isAuth && <Registration />} />
-          <Route path="/author-item" element={<AuthorItem authorName='Author One' />} />
           <Route path="/create-course" element={< CreateCourse courseCreationHandler={courseCreationHandler} />} />
         </Routes>
 

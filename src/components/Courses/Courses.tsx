@@ -39,7 +39,7 @@ const Courses: React.FC<Props> = ({ coursesList, authorsList }) => {
             </div>
             <ul className='courses-list'>
                 {coursesList.map(({ id, title, description, creationDate, duration, authors }, index) => {
-                    const authourNames: string[] = getAuthorsNames(authors, authorsList)
+                    const authorNames: string[] = getAuthorsNames(authors, authorsList);
 
                     return (
                         <li key={id || index}>
@@ -48,7 +48,7 @@ const Courses: React.FC<Props> = ({ coursesList, authorsList }) => {
                                 description={description}
                                 creationDate={formatCreationDate(creationDate)}
                                 duration={getCourseDuration(duration)}
-                                authors={authourNames.join(", ")}
+                                authors={authorNames.join(", ")}
                             />
                         </li>
                     )

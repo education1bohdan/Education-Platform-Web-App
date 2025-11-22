@@ -7,14 +7,15 @@ import AuthorItem from './AuthorItem/AuthorItem';
 import { CREATE_AUTHOR_TEXT, CANCEL, CREATE_COURSE } from '../../constants';
 import getCourseDuration from '../../helpers/getCourseDuration';
 import validateCreateCourse from '../../helpers/validateCreateCourse';
+import validateCourseAuthors from '../../helpers/validateCourseAuthors';
 import styles from './CreateCourse.module.scss';
 import { Course, Authors } from '../Courses/Courses';
+import { v4 as uuidv4 } from 'uuid';
+import formatCreationDate from '../../helpers/formatCreationDate';
 
 interface Props {
-    courseCreationHandler: (createdCourse: Course) => void;
+    courseCreationHandler: (createdCourse: Course, addedAuthors: Authors[]) => void;
 }
-
-// export type CreatedCourse = Course[];
 
 interface formData {
     id: string;
@@ -34,10 +35,16 @@ export interface ErrorsObject {
     [key: string]: string | undefined;
 }
 
-const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
+// interface addedAuthor {
+//     id: string;
+//     added: boolean;
+// }
 
+const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
     const [courseDuration, setCourseDuration] = useState<string[]>(['00:00', 'hours']);
     const [formErrors, setFormErrors] = useState<ErrorsObject>({});
+    const [authorList, setAuthor] = useState<Authors[]>([]);
+    const [addedAuthors, setAddedAuthors] = useState<Authors[]>([]);
     const [formData, setFormData] = useState<formData>({
         id: '',
         title: '',
@@ -47,6 +54,8 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
         authors: '',
     })
 
+    // Change event handler for most controlled form input fields 
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>): void => {
         const { name, value } = event.target;
 
@@ -54,6 +63,8 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
 
         setFormErrors(prev => ({ ...prev, [name]: '', }));
     }
+
+    // Change event handler for duration input field 
 
     const handleChangeDuration = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>): void => {
         const { value } = event.target;
@@ -70,9 +81,35 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
         setCourseDuration(durationValue);
     }
 
-    const handleAuthorCreation = (): void => {
+    // Handler for author creation by clicking on the button "CREATE AUTHOR"
 
+    const handleAuthorCreation = (): void => {
+        const validationError = validateCourseAuthors(formData.authors, 2, 25);
+        if (validationError) {
+            setFormErrors(prev => ({ ...prev, authors: validationError }));
+        } else {
+            const courseId = uuidv4();
+            setAuthor(prev => ([...prev, { id: courseId, name: (formData.authors).trim() }]));
+            setFormData(prev => ({ ...prev, authors: '' }));
+        }
     }
+
+    // Handler for adding & deleting authors' names
+
+    const addDeleteAuthor = (id: string): void => {
+        const authorToAdd = authorList.find(author => author.id === id);
+        const authorToDelete = addedAuthors.find(author => author.id === id);
+
+        if (authorToAdd) {
+            setAddedAuthors(prev => [...prev, authorToAdd]);
+            setAuthor(authorList.filter(author => author.id !== id));
+        } else if (authorToDelete) {
+            setAuthor(prev => [...prev, authorToDelete]);
+            setAddedAuthors(addedAuthors.filter(author => author.id !== id));
+        }
+    }
+
+    // Handler for form submittion by clicking on the button "CREATE COURSE"
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
@@ -83,13 +120,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
 
         if (Object.keys(validationErrors).length === 0) {
 
-            const today = new Date();
-
-            const day = String(today.getDate()).padStart(2, "0");
-            const month = String(today.getMonth() + 1).padStart(2, "0");
-            const year = today.getFullYear();
-
-            const date = `${day}.${month}.${year}`;
+            const date = formatCreationDate();
 
             const createdCourse: Course = {
                 id: '12345',
@@ -97,11 +128,10 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                 description: formData.description,
                 creationDate: date,
                 duration: Number(formData.duration),
-                authors: ['123445', '123456'],
+                authors: addedAuthors.map((a) => a.id),
             }
-            courseCreationHandler(createdCourse);
+            courseCreationHandler(createdCourse, addedAuthors);
 
-            console.log(createdCourse)
             setFormData({
                 id: '',
                 title: '',
@@ -111,6 +141,8 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                 authors: '',
             });
             setCourseDuration(['00:00', 'hours']);
+            setAuthor([]);
+            setAddedAuthors([]);
         }
 
     }
@@ -142,15 +174,23 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                     <div className={styles['authors-list-container']}>
                         <h3>Authors List</h3>
                         <ul className={styles['authors-list']}>
-                            <AuthorItem authorName='Author One' />
-                            <AuthorItem authorName='Author Two' />
+                            {authorList.map(author => {
+                                return <AuthorItem author={author} onButtonClick={addDeleteAuthor} isAdded={false} />
+                            })}
                         </ul>
                     </div>
                 </div>
                 <div className={styles.courseAuthors}>
                     <div>
                         <h2>Course Authors</h2>
-                        <p>Author list is empty</p>
+                        <ul>
+                            {addedAuthors.length === 0
+                                ? <li>Author list is empty</li>
+                                : addedAuthors.map(author => {
+                                    return <AuthorItem author={author} onButtonClick={addDeleteAuthor} isAdded={true} />
+                                })
+                            }
+                        </ul>
                     </div>
                 </div>
             </form>

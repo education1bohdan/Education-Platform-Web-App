@@ -1,6 +1,6 @@
 @use '/src/scss/variables' as vars;
 
-button {
+.button {
     border: none;
     border-radius: 4px;
     background-color: vars.$primary-blue;
