@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Button from '../../../../common/Button/Button';
 import { SHOW_COURSE_TEXT } from '../../../../constants';
 import "./CourseCard.scss";
@@ -11,12 +12,13 @@ export interface Props {
     authors: string;
 }
 
-const CourseCard: React.FC<Props> = ({ title, description, creationDate, duration, authors }) => {
+const CourseCard: React.FC<Props> = ({ id, title, description, creationDate, duration, authors }) => {
 
     function handleClick(): void {
 
     }
 
+    const link = `/${id}`
     return (<div className="course-card">
         <div className="side-line"></div>
         <h2>{title}</h2>
@@ -31,7 +33,7 @@ const CourseCard: React.FC<Props> = ({ title, description, creationDate, duratio
                     <li><b>Created: </b>{creationDate}</li>
                 </ul>
 
-                <Button buttonText={SHOW_COURSE_TEXT} clickHandler={handleClick} buttonWidth={'180px'} />
+                <Link to={link}><Button buttonText={SHOW_COURSE_TEXT} clickHandler={handleClick} buttonWidth={'180px'} /></Link>
             </div>
         </div>
     </div>);

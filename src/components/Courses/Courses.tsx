@@ -8,7 +8,7 @@ import { ADD_NEW_COURSE_TEXT } from '../../constants';
 import './Courses.scss';
 import { Link } from 'react-router-dom';
 export interface Course {
-    id: string;
+    id?: string;
     title: string;
     description: string;
     creationDate: string;
@@ -27,15 +27,11 @@ export interface Props {
 
 const Courses: React.FC<Props> = ({ coursesList, authorsList }) => {
 
-    function addNewCourseHandler(): void {
-
-    }
-
     return (
         <div className='main-content'>
             <div className="courses-action-container">
                 <SearchBar />
-                <Link to='/create-course'><Button buttonText={ADD_NEW_COURSE_TEXT} clickHandler={addNewCourseHandler} buttonWidth={'183px'} /></Link>
+                <Link to='/create-course'><Button buttonText={ADD_NEW_COURSE_TEXT} buttonWidth={'183px'} /></Link>
             </div>
             <ul className='courses-list'>
                 {coursesList.map(({ id, title, description, creationDate, duration, authors }, index) => {
@@ -44,6 +40,7 @@ const Courses: React.FC<Props> = ({ coursesList, authorsList }) => {
                     return (
                         <li key={id || index}>
                             <CourseCard
+                                id={id}
                                 title={title}
                                 description={description}
                                 creationDate={formatCreationDate(creationDate)}

@@ -110,6 +110,13 @@
                     display: flex;
                     flex-direction: column;
                     row-gap: 0.5em;
+                    max-width: 190px;
+                    text-align: center;
+
+                    .authorErrorMessage {
+                        display: block;
+                        color: vars.$error-color;
+                    }
                 }
             }
         }

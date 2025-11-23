@@ -4,4 +4,4 @@ export default function getAuthorsNames(authors: string[], authorsList: Authors[
     return authors
         .map(authorId => authorsList.find((author) => author.id === authorId)?.name).filter(Boolean)
         .filter((name): name is string => name !== undefined);
-}
+};

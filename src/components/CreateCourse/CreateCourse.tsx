@@ -18,7 +18,6 @@ interface Props {
 }
 
 interface formData {
-    id: string;
     title: string;
     description: string;
     creationDate: string;
@@ -35,18 +34,13 @@ export interface ErrorsObject {
     [key: string]: string | undefined;
 }
 
-// interface addedAuthor {
-//     id: string;
-//     added: boolean;
-// }
-
 const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
     const [courseDuration, setCourseDuration] = useState<string[]>(['00:00', 'hours']);
     const [formErrors, setFormErrors] = useState<ErrorsObject>({});
     const [authorList, setAuthor] = useState<Authors[]>([]);
     const [addedAuthors, setAddedAuthors] = useState<Authors[]>([]);
+    const [authorErrors, setAuthorErrors] = useState<boolean>(true);
     const [formData, setFormData] = useState<formData>({
-        id: '',
         title: '',
         description: '',
         creationDate: '',
@@ -88,8 +82,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
         if (validationError) {
             setFormErrors(prev => ({ ...prev, authors: validationError }));
         } else {
-            const courseId = uuidv4();
-            setAuthor(prev => ([...prev, { id: courseId, name: (formData.authors).trim() }]));
+            setAuthor(prev => ([...prev, { id: uuidv4(), name: (formData.authors).trim() }]));
             setFormData(prev => ({ ...prev, authors: '' }));
         }
     }
@@ -99,14 +92,16 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
     const addDeleteAuthor = (id: string): void => {
         const authorToAdd = authorList.find(author => author.id === id);
         const authorToDelete = addedAuthors.find(author => author.id === id);
-
         if (authorToAdd) {
             setAddedAuthors(prev => [...prev, authorToAdd]);
             setAuthor(authorList.filter(author => author.id !== id));
+            setAuthorErrors(true);
         } else if (authorToDelete) {
             setAuthor(prev => [...prev, authorToDelete]);
             setAddedAuthors(addedAuthors.filter(author => author.id !== id));
+            addedAuthors.length === 0 && setAuthorErrors(false);
         }
+        // addedAuthors.length !== 0 ? setAuthorErrors(true) : setAuthorErrors(false);
     }
 
     // Handler for form submittion by clicking on the button "CREATE COURSE"
@@ -114,16 +109,17 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
 
-        const validationErrors = validateCreateCourse<formData>(formData, 2);
+        const validationErrors = validateCreateCourse<formData, Authors>(formData, addedAuthors, 2);
 
         setFormErrors(validationErrors);
+        addedAuthors.length === 0 && setAuthorErrors(false);
 
-        if (Object.keys(validationErrors).length === 0) {
+        if (Object.keys(validationErrors).length === 0 && (authorErrors && addedAuthors.length !== 0)) {
 
             const date = formatCreationDate();
 
             const createdCourse: Course = {
-                id: '12345',
+                id: uuidv4(),
                 title: formData.title,
                 description: formData.description,
                 creationDate: date,
@@ -133,7 +129,6 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
             courseCreationHandler(createdCourse, addedAuthors);
 
             setFormData({
-                id: '',
                 title: '',
                 description: '',
                 creationDate: '',
@@ -143,6 +138,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
             setCourseDuration(['00:00', 'hours']);
             setAuthor([]);
             setAddedAuthors([]);
+            setAuthorErrors(true);
         }
 
     }
@@ -168,7 +164,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                 <div className={styles.authors}>
                     <h2>Authors</h2>
                     <div className={styles['authors-input-container']}>
-                        <Input hasError={formErrors.authors ? true : false} errorMessage={formErrors.authors && formErrors.authors} inputType='text' name='authors' labelText='Author Name' inputWidth='400px' onChange={handleChange} value={formData.authors} />
+                        <Input hasError={(formErrors.authors || (!authorErrors && addedAuthors.length === 0)) ? true : false} errorMessage={formErrors.authors} inputType='text' name='authors' labelText='Author Name' inputWidth='400px' onChange={handleChange} value={formData.authors} />
                         <Button buttonText={CREATE_AUTHOR_TEXT} clickHandler={handleAuthorCreation} buttonWidth="185px" />
                     </div>
                     <div className={styles['authors-list-container']}>
@@ -184,8 +180,9 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                     <div>
                         <h2>Course Authors</h2>
                         <ul>
-                            {addedAuthors.length === 0
-                                ? <li>Author list is empty</li>
+                            {addedAuthors.length === 0 && <li>Author list is empty</li>}
+                            {!authorErrors
+                                ? <li className={styles.authorErrorMessage}>There should be at least 1 author name</li>
                                 : addedAuthors.map(author => {
                                     return <AuthorItem author={author} onButtonClick={addDeleteAuthor} isAdded={true} />
                                 })

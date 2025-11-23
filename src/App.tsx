@@ -9,6 +9,7 @@ import Login from "./components/Authentification/Login/Login";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { mockedCoursesList, mockedAuthorsList } from "./constants";
 import { Course, Authors } from "./components/Courses/Courses";
+import getAuthorsNames from "./helpers/getAuthorsNames";
 import "./App.scss";
 
 let isEmpty = false;
@@ -29,13 +30,15 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={isEmpty ? <EmptyCourseList /> : <Courses coursesList={courses} authorsList={authors} />} />
-          <Route path="/courseinfo" element={<CourseInfo
-            id={mockedCoursesList[0].id}
-            title={mockedCoursesList[0].title}
-            description={mockedCoursesList[0].description}
-            creationDate={mockedCoursesList[0].creationDate}
-            duration='02:40 hours'
-            authors='Vasiliy Dobkin, Nicolas Kim' />} />
+          {courses.map(course => {
+            return <Route path={`/${course.id}`} element={<CourseInfo
+              id={course.id}
+              title={course.title}
+              description={course.description}
+              creationDate={course.creationDate}
+              duration={`${course.duration}`}
+              authors={getAuthorsNames(course.authors, authors).join(', ')} />} />
+          })}
           <Route path="/login" element={!isAuth && <Login />} />
           <Route path="/registration" element={!isAuth && <Registration />} />
           <Route path="/create-course" element={< CreateCourse courseCreationHandler={courseCreationHandler} />} />

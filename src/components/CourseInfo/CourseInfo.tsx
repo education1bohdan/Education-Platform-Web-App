@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../common/Button/Button";
 import { BACK_TEXT } from "../../constants";
 import "./CourseInfo.scss";
@@ -38,7 +39,7 @@ const CourseInfo: React.FC<Props> = ({ id, title, description, creationDate, dur
                         </div>
                     </div>
                 </div>
-                <Button buttonText={BACK_TEXT} clickHandler={backHandler} buttonWidth="185px" />
+                <Link to="/"><Button buttonText={BACK_TEXT} clickHandler={backHandler} buttonWidth="185px" /></Link>
             </div>
         </div>
 

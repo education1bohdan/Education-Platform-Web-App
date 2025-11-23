@@ -1,22 +1,20 @@
 import { ErrorsObject } from '../components/CreateCourse/CreateCourse';
-function validateCreateCourse<T extends Record<string, string>>(object: T, minLength: number): ErrorsObject {
+function validateCreateCourse<T extends Record<string, string>, A>(inputObject: T, authorsArray: A[], minLength: number,): ErrorsObject {
     const errorsObject: ErrorsObject = {};
 
-    for (let key in object) {
+    for (let key in inputObject) {
 
-        if (key !== 'id' && key !== 'creationDate') {
+        if (key !== 'creationDate' && key !== 'authors') {
             const inputName = key.charAt(0).toUpperCase() + key.slice(1);
 
-            if (!object[key].trim()) {
+            if (!inputObject[key].trim() && key !== 'authors') {
                 errorsObject[key] = `${inputName} is required`;
-            } else if ((key !== 'duration') && (object[key].length < minLength)) {
-                if (key === 'authors') {
-                    errorsObject[key] = `The ${key}' names should be at least ${minLength} characters long`;
-                } else {
-                    errorsObject[key] = `The ${key} should be at least ${minLength} characters long`;
-                }
-            } else if ((key === 'duration') && (object[key] === '0')) {
+            } else if ((key !== 'duration' && key !== 'authors') && (inputObject[key].length < minLength)) {
+                errorsObject[key] = `The ${key} should be at least ${minLength} characters long`;
+            } else if ((key === 'duration') && (inputObject[key] === '0')) {
                 errorsObject[key] = `The ${key} should be more than 0`;
+            } else if ((key === 'authors') && authorsArray.length === 0) {
+                errorsObject[key] = ' ';
             }
         }
     }

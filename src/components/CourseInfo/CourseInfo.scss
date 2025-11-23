@@ -58,7 +58,6 @@
                     display: flex;
                     justify-content: space-between;
                     flex-direction: column;
-                    // row-gap: 1.5em;
                     list-style: none;
 
                     li {
@@ -80,7 +79,7 @@
 
     }
 
-    button {
+    a {
         align-self: flex-end;
     }
 }
