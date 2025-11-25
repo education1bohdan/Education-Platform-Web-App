@@ -183,9 +183,13 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                                         Delete author
                                     </button>
                                 </>
-
                             })}
-
+                            <button type='button' role='button' name='Add author'>
+                                Add author
+                            </button>
+                            <button type='button' role='button' name='Add author'>
+                                Delete author
+                            </button>
                         </ul>
                     </div>
                 </div>
