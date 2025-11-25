@@ -48,7 +48,6 @@ const Courses: React.FC<Props> = ({ coursesList, authorsList }) => {
                 {courses.length === 0 ?
                     <h1>No results...</h1>
                     : courses.map(({ id, title, description, creationDate, duration, authors }, index) => {
-                        const authorNames: string[] = getAuthorsNames(authors, authorsList);
 
                         return (
                             <li key={id || index}>
@@ -58,7 +57,7 @@ const Courses: React.FC<Props> = ({ coursesList, authorsList }) => {
                                     description={description}
                                     creationDate={formatCreationDate(creationDate)}
                                     duration={getCourseDuration(duration)}
-                                    authors={authorNames.join(", ")}
+                                    authors={getAuthorsNames(authors, authorsList)}
                                 />
                             </li>
                         )

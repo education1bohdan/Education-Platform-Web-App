@@ -37,7 +37,7 @@ function App() {
               description={course.description}
               creationDate={course.creationDate}
               duration={`${course.duration}`}
-              authors={getAuthorsNames(course.authors, authors).join(', ')} />} />
+              authors={getAuthorsNames(course.authors, authors)} />} />
           })}
           <Route path="/login" element={!isAuth && <Login />} />
           <Route path="/registration" element={!isAuth && <Registration />} />
