@@ -56,7 +56,7 @@ const Login = () => {
 
 
     return (
-        <Authentification title="Login" buttonText={LOGIN_BUTTON_TEXT} handler={handleLogin} linkPath='/registration' stylingClass={'registration-login'} reference='registration'>
+        <Authentification title="Login" buttonText={LOGIN_BUTTON_TEXT} handler={handleLogin} linkPath='/registration' stylingClass={'registration-login'} reference='registration' buttonName="LOGIN">
             <Input hasError={formErrors.email ? true : false} inputType='email' name='email' placeholderText='Input text' labelText='Email' inputWidth='286px' onChange={handleChange} value={formData.email} errorMessage={formErrors.email && formErrors.email} />
             <Input hasError={formErrors.password ? true : false} inputType='password' name='password' placeholderText='Input text' labelText='Password' inputWidth='286px' onChange={handleChange} value={formData.password} errorMessage={formErrors.password && formErrors.password} />
         </Authentification>

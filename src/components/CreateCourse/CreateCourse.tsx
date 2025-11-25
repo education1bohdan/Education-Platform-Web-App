@@ -143,6 +143,10 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
 
     }
 
+    const cancelButtonHandler = (): void => {
+
+    }
+
     return (
         <div className={"main-content " + styles.createCourse} >
             <h1>Course Edit/Create Page</h1>
@@ -165,7 +169,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                     <h2>Authors</h2>
                     <div className={styles['authors-input-container']}>
                         <Input hasError={(formErrors.authors || (!authorErrors && addedAuthors.length === 0)) ? true : false} errorMessage={formErrors.authors} inputType='text' name='authors' labelText='Author Name' inputWidth='400px' onChange={handleChange} value={formData.authors} />
-                        <Button buttonText={'CREATE_AUTHOR_TEXT'} clickHandler={handleAuthorCreation} buttonWidth="185px" />
+                        <Button buttonText={CREATE_AUTHOR_TEXT} clickHandler={handleAuthorCreation} buttonWidth="185px" name='create author' />
                     </div>
                     <div className={styles['authors-list-container']}>
                         <h3>Authors List</h3>
@@ -192,7 +196,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                 </div>
             </form>
             <div className={styles['button-container']}>
-                <Button buttonText={CANCEL} buttonWidth="185px" />
+                <Button buttonText={CANCEL} buttonWidth="185px" clickHandler={cancelButtonHandler} />
                 <Button type='submit' buttonText={CREATE_COURSE} buttonWidth="185px" form='create-course-form' />
             </div>
         </div>
