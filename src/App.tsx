@@ -17,7 +17,7 @@ let isAuth = false;
 
 function App() {
   const [courses, setCourses] = useState<Course[]>(mockedCoursesList);
-  const [authors, setAuthors] = useState<Authors[]>(mockedAuthorsList)
+  const [authors, setAuthors] = useState<Authors[]>(mockedAuthorsList);
 
   const courseCreationHandler = (createdCourse: Course, addedAuthors: Authors[]): void => {
     setCourses(prev => [...prev, createdCourse]);

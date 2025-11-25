@@ -1,6 +1,5 @@
 @use "../../scss/mixins";
-
-// @include mixins.main-content-generic();
+@use "../../scss/variables" as vars;
 
 .courses-action-container {
     display: flex;
@@ -13,4 +12,15 @@
     flex-direction: column;
     row-gap: 2rem;
     margin: 2rem 0;
+}
+
+.searchError {
+    align-self: center;
+    justify-self: center;
+
+    h1 {
+        color: vars.$primary-dark;
+        font-size: 2em;
+        margin-top: 2rem;
+    }
 }

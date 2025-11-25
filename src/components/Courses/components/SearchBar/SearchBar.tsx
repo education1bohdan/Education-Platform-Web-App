@@ -1,17 +1,38 @@
+import { useState } from "react";
 import Input from "../../../../common/Input/Input";
 import Button from "../../../../common/Button/Button";
 import { INPUT_SEARCHBAR_TEXT, SEARCH_BUTTON_TEXT } from "../../../../constants";
-import "./SearchBar.scss"
+import { Course } from "../../Courses";
+import "./SearchBar.scss";
 
-const SearchBar: React.FC = () => {
 
-    function handleSearch(): void {
+interface Props {
+    filterCourses: (isSearching: boolean, courses?: Course[]) => void;
+    coursesList: Course[];
+}
 
+const SearchBar: React.FC<Props> = ({ filterCourses, coursesList }) => {
+    const [searchData, setSearchData] = useState<string>('');
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = event.target;
+        setSearchData(value);
+    }
+
+    const handleSearch = (): void => {
+        const realData = searchData.trim().toLowerCase();
+        if (realData) {
+            const filteredArray: Course[] = coursesList.filter((course) => (course.id.toLowerCase()).includes(realData) || (course.title.toLowerCase()).includes(realData));
+            filterCourses(true, filteredArray);
+
+        } else if (!realData) {
+            filterCourses(false)
+        }
     }
 
     return (
         <div className="search-bar">
-            <Input placeholderText={INPUT_SEARCHBAR_TEXT} />
+            <Input placeholderText={INPUT_SEARCHBAR_TEXT} onChange={handleChange} value={searchData} />
             <Button buttonText={SEARCH_BUTTON_TEXT} clickHandler={handleSearch} buttonWidth="148px" />
         </div>
     )
