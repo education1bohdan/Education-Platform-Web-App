@@ -180,7 +180,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                             <button type='button' role='button' name='Add author' onClick={() => setAddedAuthors([{ id: 'test', name: 'test' }])}>
                                 Add author
                             </button>
-                            <button type='button' role='button' name='Add author' onClick={() => setAddedAuthors([{ id: 'test', name: 'test' }])}>
+                            <button type='button' role='button' name='Delete author' onClick={() => setAddedAuthors([])}>
                                 Delete author
                             </button>
                         </ul>
@@ -202,8 +202,8 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                 </div>
             </form>
             <div className={styles['button-container']}>
-                <Button buttonText={CANCEL} buttonWidth="185px" clickHandler={() => cancelButtonHandler} />
-                <Button type='submit' buttonText={CREATE_COURSE} buttonWidth="185px" form='create-course-form' name='cancel' role='button' />
+                <Button buttonText='cancel' buttonWidth="185px" clickHandler={cancelButtonHandler} name='cancel' role='button' />
+                <Button type='submit' buttonText={CREATE_COURSE} buttonWidth="185px" form='create-course-form' />
             </div>
         </div>
     )
