@@ -114,7 +114,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
         setFormErrors(validationErrors);
         addedAuthors.length === 0 && setAuthorErrors(false);
 
-        if (Object.keys(validationErrors).length === 0 && (authorErrors && addedAuthors.length !== 0)) {
+        if (Object.keys(validationErrors).length === 0) {
 
             const date = formatCreationDate();
 
@@ -140,7 +140,6 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
             setAddedAuthors([]);
             setAuthorErrors(true);
         }
-        event.currentTarget.reset()
     }
 
     const cancelButtonHandler = (): void => {
