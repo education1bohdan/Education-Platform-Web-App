@@ -157,7 +157,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                     <div className={styles['duration-input-container']}>
                         <Input hasError={formErrors.duration ? true : false} errorMessage={formErrors.duration && formErrors.duration} inputType='text' name='duration' labelText='Duration' inputWidth='400px' onChange={handleChangeDuration} value={formData.duration} />
                         <div className={styles['duration-p']}>
-                            <p><strong>{courseDuration[0]}</strong> {courseDuration[1]}</p>
+                            <p>{courseDuration[0]} {courseDuration[1]}</p>
                         </div>
                     </div>
                 </div>
@@ -165,7 +165,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                     <h2>Authors</h2>
                     <div className={styles['authors-input-container']}>
                         <Input hasError={(formErrors.authors || (!authorErrors && addedAuthors.length === 0)) ? true : false} errorMessage={formErrors.authors} inputType='text' name='authors' labelText='Author Name' inputWidth='400px' onChange={handleChange} value={formData.authors} />
-                        <Button buttonText={CREATE_AUTHOR_TEXT} clickHandler={handleAuthorCreation} buttonWidth="185px" />
+                        <Button buttonText={'CREATE_AUTHOR_TEXT'} clickHandler={handleAuthorCreation} buttonWidth="185px" />
                     </div>
                     <div className={styles['authors-list-container']}>
                         <h3>Authors List</h3>
