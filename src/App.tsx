@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Courses from "./components/Courses/Courses";
 import EmptyCourseList from "./components/EmptyCourseList/EmptyCourseList";
 import CourseInfo from "./components/CourseInfo/CourseInfo";
-import Registration from "./components/Authentification/Registration/Registration";
+import Registration from "./components/Registration/Registration";
 import Login from "./components/Login/Login";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { mockedCoursesList, mockedAuthorsList } from "./constants";
