@@ -175,19 +175,12 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                         <h3>Authors List</h3>
                         <ul className={styles['authors-list']}>
                             {authorList.map(author => {
-                                return <><AuthorItem author={author} onButtonClick={addDeleteAuthor} isAdded={false} />
-                                    <button type='button' role='button' name='Add author' onClick={() => addDeleteAuthor(author.id)}>
-                                        Add author
-                                    </button>
-                                    <button type='button' role='button' name='Add author' onClick={() => addDeleteAuthor(author.id)}>
-                                        Delete author
-                                    </button>
-                                </>
+                                return <AuthorItem author={author} onButtonClick={addDeleteAuthor} isAdded={false} />
                             })}
-                            <button type='button' role='button' name='Add author'>
+                            <button type='button' role='button' name='Add author' onClick={() => setAddedAuthors([{ id: 'test', name: 'test' }])}>
                                 Add author
                             </button>
-                            <button type='button' role='button' name='Add author'>
+                            <button type='button' role='button' name='Add author' onClick={() => setAddedAuthors([{ id: 'test', name: 'test' }])}>
                                 Delete author
                             </button>
                         </ul>
@@ -197,7 +190,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                     <div>
                         <h2>Course Authors</h2>
                         <ul>
-                            {addedAuthors.length === 0 && <p>Author list is empty</p>}
+                            {addedAuthors.length === 0 && <p>author list is empty</p>}
                             {!authorErrors
                                 ? <li className={styles.authorErrorMessage}>There should be at least 1 author name</li>
                                 : addedAuthors.map(author => {
