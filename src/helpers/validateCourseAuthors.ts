@@ -5,7 +5,7 @@ function validateCourseAuthors(authorName: string, minLength?: number, maxLength
     if (!name) {
         errorMessage = 'Author name is required';
     } else if (minLength && name.length < minLength) {
-        errorMessage = `The name should be at least ${minLength} characters long`;
+        errorMessage = `author name should be at least 2 characters`;
     } else if (maxLength && name.length > maxLength) {
         errorMessage = `The name should be no longer than ${maxLength} characters`;
     }

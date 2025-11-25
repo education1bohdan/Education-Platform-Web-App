@@ -20,11 +20,11 @@ const AuthorItem: React.FC<Props> = ({ author, onButtonClick, isAdded }) => {
             {!isAdded ?
                 <button type='button' role='button' name='Add author' onClick={() => onButtonClick(id)}>
                     Add author
-                    <img className={styles.plus} src={plus} alt="Plus" />
+
                 </button>
                 : <button type='button' role='button' name='Delete author' onClick={() => onButtonClick(id)}>
                     Delete author
-                    <img className={styles.trashBin} src={trashBin} alt="Trash Bin" />
+
                 </button>
             }
         </li>
