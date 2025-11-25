@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Input from '../../common/Input/Input';
 import Button from "../../common/Button/Button";
@@ -10,7 +10,7 @@ import validateCreateCourse from '../../helpers/validateCreateCourse';
 import validateCourseAuthors from '../../helpers/validateCourseAuthors';
 import styles from './CreateCourse.module.scss';
 import { Course, Authors } from '../Courses/Courses';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import formatCreationDate from '../../helpers/formatCreationDate';
 
 interface Props {
@@ -82,7 +82,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
         if (validationError) {
             setFormErrors(prev => ({ ...prev, authors: validationError }));
         } else {
-            setAuthor(prev => ([...prev, { id: uuidv4(), name: (formData.authors).trim() }]));
+            setAuthor(prev => ([...prev, { id: Math.random().toString(36).substring(2), name: (formData.authors).trim() }]));
             setFormData(prev => ({ ...prev, authors: '' }));
         }
     }
@@ -119,7 +119,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
             const date = formatCreationDate();
 
             const createdCourse: Course = {
-                id: uuidv4(),
+                id: Math.random().toString(36).substring(2),
                 title: formData.title,
                 description: formData.description,
                 creationDate: date,
@@ -192,7 +192,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                 </div>
             </form>
             <div className={styles['button-container']}>
-                <Link to='/'><Button buttonText={CANCEL} buttonWidth="185px" /></Link>
+                <Button buttonText={CANCEL} buttonWidth="185px" />
                 <Button type='submit' buttonText={CREATE_COURSE} buttonWidth="185px" form='create-course-form' />
             </div>
         </div>
