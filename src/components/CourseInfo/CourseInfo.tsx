@@ -2,15 +2,12 @@ import { Link } from "react-router-dom";
 import Button from "../../common/Button/Button";
 import { BACK_TEXT } from "../../constants";
 import "./CourseInfo.scss";
+import getCourseDuration from "../../helpers/getCourseDuration";
 import { Props } from "../Courses/components/CourseCard/CourseCard";
 
 const CourseInfo: React.FC<Props> = ({ id, title, description, creationDate, duration, authors }) => {
-    const durationText: string = duration;
+    const durationText: string = getCourseDuration(duration);
     const [firstPart, secondPart] = durationText.split(' ');
-
-    function backHandler(): void {
-
-    }
 
     return (
         <div className='main-content'>
@@ -39,7 +36,7 @@ const CourseInfo: React.FC<Props> = ({ id, title, description, creationDate, dur
                         </div>
                     </div>
                 </div>
-                <Link to="/"><Button buttonText={BACK_TEXT} clickHandler={backHandler} buttonWidth="185px" /></Link>
+                <Link to="/"><Button buttonText={BACK_TEXT} buttonWidth="185px" /></Link>
             </div>
         </div>
 

@@ -14,10 +14,6 @@ export interface Props {
 
 const CourseCard: React.FC<Props> = ({ id, title, description, creationDate, duration, authors }) => {
 
-    function handleClick(): void {
-
-    }
-
     const link = `/${id}`
     return (<div className="course-card">
         <div className="side-line"></div>
@@ -33,7 +29,7 @@ const CourseCard: React.FC<Props> = ({ id, title, description, creationDate, dur
                     <li><b>Created: </b>{creationDate}</li>
                 </ul>
 
-                <Link to={link}><Button buttonText={SHOW_COURSE_TEXT} clickHandler={handleClick} buttonWidth={'180px'} /></Link>
+                <Link to={link}><Button buttonText={SHOW_COURSE_TEXT} buttonWidth={'180px'} /></Link>
             </div>
         </div>
     </div>);

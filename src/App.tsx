@@ -11,6 +11,7 @@ import { mockedCoursesList, mockedAuthorsList } from "./constants";
 import { Course, Authors } from "./components/Courses/Courses";
 import getAuthorsNames from "./helpers/getAuthorsNames";
 import "./App.scss";
+import formatCreationDate from "./helpers/formatCreationDate";
 
 let isEmpty = false;
 let isAuth = false;
@@ -35,7 +36,7 @@ function App() {
               id={course.id}
               title={course.title}
               description={course.description}
-              creationDate={course.creationDate}
+              creationDate={formatCreationDate(course.creationDate)}
               duration={`${course.duration}`}
               authors={getAuthorsNames(course.authors, authors)} />} />
           })}
