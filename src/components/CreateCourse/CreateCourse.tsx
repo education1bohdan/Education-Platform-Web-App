@@ -140,7 +140,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
             setAddedAuthors([]);
             setAuthorErrors(true);
         }
-        event.currentTarget.reset()
+
     }
 
     const cancelButtonHandler = (): void => {
@@ -190,7 +190,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                     <div>
                         <h2>Course Authors</h2>
                         <ul>
-                            {/* {addedAuthors.length === 0 && <li>Author list is empty</li>} */}
+                            {addedAuthors.length === 0 && <li>Author list is empty</li>}
                             {!authorErrors
                                 ? <li className={styles.authorErrorMessage}>There should be at least 1 author name</li>
                                 : addedAuthors.map(author => {
