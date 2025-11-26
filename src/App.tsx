@@ -5,7 +5,7 @@ import Courses from "./components/Courses/Courses";
 import EmptyCourseList from "./components/EmptyCourseList/EmptyCourseList";
 import CourseInfo from "./components/CourseInfo/CourseInfo";
 import Registration from "./components/Authentification/Registration/Registration";
-import Login from "./components/Login/Login";
+import Login from "./components/Authentification/Login/Login";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { mockedCoursesList, mockedAuthorsList } from "./constants";
 import { Course, Authors } from "./components/Courses/Courses";

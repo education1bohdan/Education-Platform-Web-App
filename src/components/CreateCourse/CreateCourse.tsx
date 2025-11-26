@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Input from '../../common/Input/Input';
 import Button from "../../common/Button/Button";
 import TextArea from '../../common/TextArea/TextArea';
-import AuthorItem from '../AuthorItem/AuthorItem';
+import AuthorItem from './AuthorItem/AuthorItem';
 import { CREATE_AUTHOR_TEXT, CANCEL, CREATE_COURSE } from '../../constants';
 import getCourseDuration from '../../helpers/getCourseDuration';
 import validateCreateCourse from '../../helpers/validateCreateCourse';
