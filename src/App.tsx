@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Header from "./components/Header/Header";
 import Courses from "./components/Courses/Courses";
@@ -26,27 +26,24 @@ function App() {
   }
 
   return (
-    <Router>
-      <div className='App'>
-        <Header />
-        <Routes>
-          <Route path="/" element={isEmpty ? <EmptyCourseList /> : <Courses coursesList={courses} authorsList={authors} />} />
-          {courses.map(course => {
-            return <Route path={`/${course.id}`} element={<CourseInfo
-              id={course.id}
-              title={course.title}
-              description={course.description}
-              creationDate={formatCreationDate(course.creationDate)}
-              duration={`${course.duration}`}
-              authors={getAuthorsNames(course.authors, authors)} />} />
-          })}
-          <Route path="/login" element={!isAuth && <Login />} />
-          <Route path="/registration" element={!isAuth && <Registration />} />
-          <Route path="/create-course" element={< CreateCourse courseCreationHandler={courseCreationHandler} />} />
-        </Routes>
-
-      </div >
-    </Router>
+    <div className='App'>
+      <Header />
+      <Routes>
+        <Route path="/" element={isEmpty ? <EmptyCourseList /> : <Courses coursesList={courses} authorsList={authors} />} />
+        {courses.map(course => {
+          return <Route path={`/${course.id}`} element={<CourseInfo
+            id={course.id}
+            title={course.title}
+            description={course.description}
+            creationDate={formatCreationDate(course.creationDate)}
+            duration={`${course.duration}`}
+            authors={getAuthorsNames(course.authors, authors)} />} />
+        })}
+        <Route path="/login" element={!isAuth && <Login />} />
+        <Route path="/registration" element={!isAuth && <Registration />} />
+        <Route path="/create-course" element={< CreateCourse courseCreationHandler={courseCreationHandler} />} />
+      </Routes>
+    </div >
   );
 }
 
