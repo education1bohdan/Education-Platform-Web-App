@@ -10,9 +10,7 @@ function validateCreateCourse<T extends Record<string, string>, A>(inputObject: 
             if (!inputObject[key].trim() && key !== 'authors') {
                 errorsObject[key] = `${inputName} is required`;
             } else if ((key !== 'duration' && key !== 'authors') && (inputObject[key].length < minLength)) {
-                if (key === 'authors') {
-                    errorsObject[key] = `${key} name is required and should be at least 2 characters`;
-                } else { errorsObject[key] = `${key} is required and should be at least 2 characters`; }
+                errorsObject[key] = `The ${key} should be at least ${minLength} characters long`;
             } else if ((key === 'duration') && (inputObject[key] === '0')) {
                 errorsObject[key] = `The ${key} should be more than 0`;
             } else if ((key === 'authors') && authorsArray.length === 0) {
