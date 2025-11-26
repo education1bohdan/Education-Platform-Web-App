@@ -1,4 +1,4 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ReactNode } from 'react';
 import { FormEventHandler } from 'react';
 import Button from "../../common/Button/Button";
@@ -26,7 +26,7 @@ const Authentification: React.FC<AuthProps> = ({ children, title, buttonText, ha
                 <div className={styles['form-container']}>
                     {children}
                     <Button type='submit' buttonWidth='286px' buttonText={buttonText} />
-                    <p className={styles['login-registration-link']}>If you have an account you may <strong>{reference}</strong></p>
+                    <p className={styles['login-registration-link']}>If you have an account you may <Link to={linkPath}><strong>{reference}</strong></Link></p>
                 </div>
             </form>
         </div>
