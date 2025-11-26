@@ -12,11 +12,10 @@ interface AuthProps {
     linkPath: string;
     stylingClass: string;
     reference: string;
-    buttonName?: string;
 }
 
 
-const Authentification: React.FC<AuthProps> = ({ children, title, buttonText, handler, linkPath, stylingClass, reference, buttonName }) => {
+const Authentification: React.FC<AuthProps> = ({ children, title, buttonText, handler, linkPath, stylingClass, reference }) => {
 
     const formClasses = `main-content ${styles[stylingClass]}`
 
@@ -26,7 +25,7 @@ const Authentification: React.FC<AuthProps> = ({ children, title, buttonText, ha
             <form onSubmit={handler}>
                 <div className={styles['form-container']}>
                     {children}
-                    <Button type='submit' buttonWidth='286px' buttonText={buttonText} name={buttonName} />
+                    <Button type='submit' buttonWidth='286px' buttonText={buttonText} />
                     <p className={styles['login-registration-link']}>If you have an account you may <strong>{reference}</strong></p>
                 </div>
             </form>
