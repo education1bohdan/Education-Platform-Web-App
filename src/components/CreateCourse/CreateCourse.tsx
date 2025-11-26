@@ -177,12 +177,6 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                             {authorList.map(author => {
                                 return <AuthorItem author={author} onButtonClick={addDeleteAuthor} isAdded={false} />
                             })}
-                            <button type='button' role='button' name='Add author'>
-                                Add author
-                            </button>
-                            <button type='button' role='button' name='Add author'>
-                                Delete author
-                            </button>
                         </ul>
                     </div>
                 </div>
