@@ -35,8 +35,4 @@ export default {
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",
-
-  transformIgnorePatterns: [
-    "node_modules/(?!(hex-rgb)|uuid)"
-  ],
 };
