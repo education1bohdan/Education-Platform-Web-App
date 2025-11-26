@@ -189,8 +189,8 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                 <div className={styles.courseAuthors}>
                     <div>
                         <h2>Course Authors</h2>
-                        {addedAuthors.length === 0 && <p>Author list is empty</p>}
                         <ul>
+                            {/* {addedAuthors.length === 0 && <li>Author list is empty</li>} */}
                             {!authorErrors
                                 ? <li className={styles.authorErrorMessage}>There should be at least 1 author name</li>
                                 : addedAuthors.map(author => {
