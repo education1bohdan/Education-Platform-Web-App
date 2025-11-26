@@ -144,7 +144,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
     }
 
     const cancelButtonHandler = (): void => {
-        alert('Cancel')
+
     }
 
     return (
@@ -203,7 +203,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
             </form>
             <div className={styles['button-container']}>
                 <Button buttonText={CANCEL} buttonWidth="185px" clickHandler={cancelButtonHandler} />
-                <Button type='submit' buttonText={CREATE_COURSE} buttonWidth="185px" form='create-course-form' name='cancel' role='button' />
+                <Button type='submit' buttonText={CREATE_COURSE} buttonWidth="185px" form='create-course-form' />
             </div>
         </div>
     )
