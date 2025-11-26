@@ -34,11 +34,7 @@ const Registration = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
 
         if (value.trim()) {
-            setFormErrors(prev => {
-                const newErrors = { ...prev };
-                delete newErrors[name];
-                return newErrors;
-            });
+            setFormErrors(prev => ({ ...prev, [name]: '' }));
         }
     }
 
@@ -61,7 +57,7 @@ const Registration = () => {
     return (
         <Authentification title="Registration" buttonText={SIGNUP_BUTTON_TEXT} handler={handleRegistration} linkPath='/login' stylingClass={'registration-login'} reference='Login'>
             <Input hasError={formErrors.name ? true : false} inputType='text' name='name' placeholderText='Input text' labelText='Name' inputWidth='286px' onChange={handleChange} value={formData.name} errorMessage={formErrors.name && formErrors.name} />
-            <Input hasError={formErrors.email ? true : false} inputType='email' name='email' placeholderText='Input text' labelText='Email' inputWidth='286px' onChange={handleChange} value={formData.email} errorMessage={formErrors.email && formErrors.email} />
+            <Input hasError={formErrors.email ? true : false} inputType='text' name='email' placeholderText='Input text' labelText='Email' inputWidth='286px' onChange={handleChange} value={formData.email} errorMessage={formErrors.email && formErrors.email} />
             <Input hasError={formErrors.password ? true : false} inputType='password' name='password' placeholderText='Input text' labelText='Password' inputWidth='286px' onChange={handleChange} value={formData.password} errorMessage={formErrors.password && formErrors.password} />
         </Authentification>
     );
