@@ -23,7 +23,7 @@ const AuthorItem: React.FC<Props> = ({ author, onButtonClick, isAdded }) => {
 
                 </button>
                 : <button type='button' role='button' name='Delete author' onClick={() => onButtonClick(id)}>
-
+                    Delete author
 
                 </button>
             }
