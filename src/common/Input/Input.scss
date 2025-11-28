@@ -1,0 +1,12 @@
+@use '../../scss/variables' as vars;
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    label {
+        color: vars.$primary-dark;
+        font-weight: 700;
+    }
+}
