@@ -1,4 +1,4 @@
-import { ErrorsObject } from '../components/Authentification/Registration/Registration';
+import { ErrorsObject } from '../components/Registration/Registration';
 
 function validateForm<T extends Record<string, string>>(object: T): ErrorsObject | {} {
     const errorsObject: Partial<Record<keyof T, string>> = {};

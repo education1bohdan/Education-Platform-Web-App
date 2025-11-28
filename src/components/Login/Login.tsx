@@ -1,9 +1,9 @@
-import Authentification from "../Authentification";
-import Input from "../../../common/Input/Input";
-import { LOGIN_BUTTON_TEXT } from "../../../constants";
+import Authentification from "../Authentification/Authentification";
+import Input from "../../common/Input/Input";
+import { LOGIN_BUTTON_TEXT } from "../../constants";
 import { useState } from "react";
 
-import validateAuth from "../../../helpers/validateAuth";
+import validateAuth from "../../helpers/validateAuth";
 
 interface FormData {
     email: string;
