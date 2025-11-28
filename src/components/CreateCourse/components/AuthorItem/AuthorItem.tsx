@@ -1,5 +1,5 @@
-import plus from '../../../assets/plus.svg';
-import trashBin from '../../../assets/trash-bin.svg';
+import plus from '../../../../assets/plus.svg';
+import trashBin from '../../../../assets/trash-bin.svg';
 import styles from './AuthorItem.module.scss';
 
 interface Author {
