@@ -2,7 +2,7 @@
 @use "../../scss/variables" as vars;
 // @include mixins.main-content-generic();
 
-.course-info {
+.courseInfo {
     display: flex;
     flex-direction: column;
     color: vars.$primary-dark;
@@ -14,7 +14,7 @@
         margin-left: 0.2em;
     }
 
-    .course-info-container {
+    .courseInfoContainer {
         display: flex;
         flex-direction: column;
         background-color: #fff;
@@ -31,22 +31,22 @@
             width: 100%;
         }
 
-        .course-info-content {
+        .courseInfoContent {
             display: flex;
 
-            .left-side {
+            .leftSide {
                 align-self: flex-start;
                 // flex: auto 0 300px;
                 min-width: 300px;
             }
 
-            .right-side {
+            .rightSide {
                 display: flex;
                 flex: 1 0 500px;
                 justify-content: center;
                 // align-items: center;
 
-                .division-line {
+                .divisionLine {
                     background-color: vars.$primary-grey;
                     width: 2px;
                     height: 200px;
@@ -67,8 +67,8 @@
 
                 }
 
-                .courses-info-labels {
-                    b {
+                .coursesInfoLabels {
+                    strong {
                         font-size: 1.25rem;
                     }
                 }
@@ -81,5 +81,17 @@
 
     a {
         align-self: flex-end;
+    }
+}
+
+.notFound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: vars.$primary-dark;
     }
 }
