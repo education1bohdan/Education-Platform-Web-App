@@ -14,7 +14,7 @@ export interface Props {
 
 const CourseCard: React.FC<Props> = ({ id, title, description, creationDate, duration, authors }) => {
 
-    const link = `/${id}`
+    const link = `${id}`
     return (<div className="course-card">
         <div className="side-line"></div>
         <h2>{title}</h2>
@@ -28,7 +28,6 @@ const CourseCard: React.FC<Props> = ({ id, title, description, creationDate, dur
                     <li><b>Duration: </b>{duration}</li>
                     <li><b>Created: </b>{creationDate}</li>
                 </ul>
-
                 <Link to={link}><Button buttonText={SHOW_COURSE_TEXT} buttonWidth={'180px'} /></Link>
             </div>
         </div>
