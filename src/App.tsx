@@ -9,9 +9,7 @@ import Login from "./components/Login/Login";
 import CreateCourse from "./components/CreateCourse/CreateCourse";
 import { mockedCoursesList, mockedAuthorsList } from "./constants";
 import { Course, Authors } from "./components/Courses/Courses";
-import getAuthorsNames from "./helpers/getAuthorsNames";
 import "./App.scss";
-import formatCreationDate from "./helpers/formatCreationDate";
 
 let isEmpty = false;
 let isAuth = false;
@@ -31,15 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to='/courses' replace />} />
         <Route path="/courses" element={isEmpty ? <EmptyCourseList /> : <Courses coursesList={courses} authorsList={authors} />} />
-        {courses.map(course => {
-          return <Route path={`/${course.id}`} element={<CourseInfo
-            id={course.id}
-            title={course.title}
-            description={course.description}
-            creationDate={formatCreationDate(course.creationDate)}
-            duration={`${course.duration}`}
-            authors={getAuthorsNames(course.authors, authors)} />} />
-        })}
+        <Route path="/courses/:courseId" element={<CourseInfo coursesList={courses} authorsList={authors} />} />
         <Route path="/login" element={!isAuth && <Login />} />
         <Route path="/registration" element={!isAuth && <Registration />} />
         <Route path="/create-course" element={<CreateCourse courseCreationHandler={courseCreationHandler} />} />
