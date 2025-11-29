@@ -1,7 +1,10 @@
+import { useState } from "react";
 import Authentification from "../Authentification/Authentification";
 import Input from "../../common/Input/Input";
 import { LOGIN_BUTTON_TEXT } from "../../constants";
-import { useState } from "react";
+import fetchAuth from "../../helpers/fetchAuth";
+import { useNavigate } from "react-router-dom";
+
 
 import validateAuth from "../../helpers/validateAuth";
 
@@ -18,7 +21,7 @@ interface ErrorsObject {
 }
 
 const Login = () => {
-
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState<FormData>({
         email: '',
@@ -32,22 +35,30 @@ const Login = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
 
         if (value.trim()) {
-            setFormErrors(prev => ({ ...prev, [name]: '' }));
+            setFormErrors({});
         }
     }
 
-    const handleLogin = (event: React.FormEvent<HTMLFormElement>): void => {
+    const handleLogin = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
 
         const validationErrors = validateAuth<FormData>(formData);
 
         setFormErrors(validationErrors);
 
-        if (Object.keys(validationErrors).length === 0) {
-            setFormData({
-                email: '',
-                password: '',
-            });
+        try {
+            const result = await fetchAuth<FormData>(formData, '/login');
+
+            if (Object.keys(formErrors).length === 0 && result.successful) {
+                localStorage.setItem('authToken', result.result);
+                navigate('/')
+                setFormData({
+                    email: '',
+                    password: '',
+                });
+            }
+        } catch (error) {
+            console.error('Login failed:', error);
         }
     }
 
