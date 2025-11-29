@@ -1,9 +1,10 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Authentification from "../Authentification/Authentification";
 import Input from "../../common/Input/Input";
 import { SIGNUP_BUTTON_TEXT } from "../../constants";
-import { useState } from "react";
 import validateAuth from "../../helpers/validateAuth";
-import { useNavigate } from "react-router-dom";
+import fetchAuth from "../../helpers/fetchAuth";
 
 export interface FormData {
     name: string;
@@ -26,7 +27,6 @@ const Registration = () => {
         email: '',
         password: '',
     });
-
     const [formErrors, setFormErrors] = useState<ErrorsObject>({});
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -34,7 +34,7 @@ const Registration = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
 
         if (value.trim()) {
-            setFormErrors(prev => ({ ...prev, [name]: '' }));
+            setFormErrors({});
         }
     }
 
@@ -46,35 +46,18 @@ const Registration = () => {
         setFormErrors(validationErrors);
 
         try {
-            const response = await fetch('http://localhost:4000/register', {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
+            const result = await fetchAuth<FormData>(formData, '/register');
 
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Registration error: ')
+            if (Object.keys(formErrors).length === 0 && result.successful) {
+                navigate('/login')
+                setFormData({
+                    name: '',
+                    email: '',
+                    password: '',
+                });
             }
-
-            const result = await response.json();
-
-
-            return result;
         } catch (error) {
-            console.error(error)
-        }
-
-        if (Object.keys(validationErrors).length === 0) {
-
-            setFormData({
-                name: '',
-                email: '',
-                password: '',
-            });
+            console.error('Registration failed:', error);
         }
     }
 
