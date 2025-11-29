@@ -12,7 +12,6 @@ import { Course, Authors } from "./components/Courses/Courses";
 import "./App.scss";
 
 let isEmpty = false;
-let isAuth = false;
 
 function App() {
   const [courses, setCourses] = useState<Course[]>(mockedCoursesList);
@@ -23,6 +22,8 @@ function App() {
     setAuthors(prev => [...prev, ...addedAuthors]);
   }
 
+  const isAuth = !!localStorage.getItem('authToken');
+
   return (
     <div className='App'>
       <Header />
@@ -30,9 +31,10 @@ function App() {
         <Route path="/" element={<Navigate to='/courses' replace />} />
         <Route path="/courses" element={isEmpty ? <EmptyCourseList /> : <Courses coursesList={courses} authorsList={authors} />} />
         <Route path="/courses/:courseId" element={<CourseInfo coursesList={courses} authorsList={authors} />} />
-        <Route path="/login" element={!isAuth && <Login />} />
-        <Route path="/registration" element={!isAuth && <Registration />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registration" element={<Registration />} />
         <Route path="/create-course" element={<CreateCourse courseCreationHandler={courseCreationHandler} />} />
+        <Route path="*" element={<Navigate to='/login' replace />} />
       </Routes>
     </div >
   );

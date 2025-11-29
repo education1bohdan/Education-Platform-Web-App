@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Authentification from "../Authentification/Authentification";
 import Input from "../../common/Input/Input";
@@ -22,6 +22,14 @@ export interface ErrorsObject {
 
 const Registration = () => {
     const navigate = useNavigate();
+    const authToken = localStorage.getItem('authToken');
+
+    useEffect(() => {
+        if (authToken) {
+            navigate('/courses', { replace: true });
+        }
+    }, [!!authToken, navigate]);
+
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',

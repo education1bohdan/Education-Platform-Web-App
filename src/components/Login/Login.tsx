@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Authentification from "../Authentification/Authentification";
 import Input from "../../common/Input/Input";
 import { LOGIN_BUTTON_TEXT } from "../../constants";
@@ -22,6 +22,13 @@ interface ErrorsObject {
 
 const Login = () => {
     const navigate = useNavigate();
+    const authToken = localStorage.getItem('authToken');
+
+    useEffect(() => {
+        if (authToken) {
+            navigate('/courses', { replace: true });
+        }
+    }, [authToken, navigate]);
 
     const [formData, setFormData] = useState<FormData>({
         email: '',
@@ -51,7 +58,7 @@ const Login = () => {
 
             if (Object.keys(formErrors).length === 0 && result.successful) {
                 localStorage.setItem('authToken', result.result);
-                navigate('/')
+                navigate('/courses')
                 setFormData({
                     email: '',
                     password: '',
