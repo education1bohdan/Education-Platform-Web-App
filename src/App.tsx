@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 import Header from "./components/Header/Header";
 import Courses from "./components/Courses/Courses";
@@ -29,7 +29,8 @@ function App() {
     <div className='App'>
       <Header />
       <Routes>
-        <Route path="/" element={isEmpty ? <EmptyCourseList /> : <Courses coursesList={courses} authorsList={authors} />} />
+        <Route path="/" element={<Navigate to='/courses' replace />} />
+        <Route path="/courses" element={isEmpty ? <EmptyCourseList /> : <Courses coursesList={courses} authorsList={authors} />} />
         {courses.map(course => {
           return <Route path={`/${course.id}`} element={<CourseInfo
             id={course.id}
@@ -41,7 +42,7 @@ function App() {
         })}
         <Route path="/login" element={!isAuth && <Login />} />
         <Route path="/registration" element={!isAuth && <Registration />} />
-        <Route path="/create-course" element={< CreateCourse courseCreationHandler={courseCreationHandler} />} />
+        <Route path="/create-course" element={<CreateCourse courseCreationHandler={courseCreationHandler} />} />
       </Routes>
     </div >
   );
