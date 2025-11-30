@@ -15,8 +15,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^7.9.6",
-    "uuid": "^13.0.0"
+    "react-router-dom": "^7.9.6"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
@@ -40,7 +39,6 @@
     "jest-transform-stub": "^2.0.0",
     "sass-embedded": "^1.93.2",
     "typescript": "^5.2.2",
-    "uuid": "^11.1.0",
     "vite": "^5.2.0"
   },
   "jest-junit": {
