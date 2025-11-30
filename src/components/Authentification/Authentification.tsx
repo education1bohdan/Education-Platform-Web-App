@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ReactNode } from 'react';
 import { FormEventHandler } from 'react';
 import Button from "../../common/Button/Button";
@@ -16,10 +16,7 @@ interface AuthProps {
 
 
 const Authentification: React.FC<AuthProps> = ({ children, title, buttonText, submitHandler, linkPath, stylingClass, reference }) => {
-
     const formClasses = `main-content ${styles[stylingClass]}`;
-
-
 
     return (
         <div className={formClasses}>
