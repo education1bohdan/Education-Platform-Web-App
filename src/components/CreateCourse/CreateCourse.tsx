@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Input from '../../common/Input/Input';
 import Button from "../../common/Button/Button";
 import TextArea from '../../common/TextArea/TextArea';
@@ -10,7 +10,7 @@ import validateCreateCourse from '../../helpers/validateCreateCourse';
 import validateCourseAuthors from '../../helpers/validateCourseAuthors';
 import styles from './CreateCourse.module.scss';
 import { Course, Authors } from '../Courses/Courses';
-import { v4 as uuidv4 } from 'uuid';
+import generateId from '../../helpers/generateId';
 import formatCreationDate from '../../helpers/formatCreationDate';
 
 interface Props {
@@ -48,6 +48,8 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
         authors: '',
     })
 
+    const navigate = useNavigate();
+
     // Change event handler for most controlled form input fields 
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>): void => {
@@ -82,8 +84,16 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
         if (validationError) {
             setFormErrors(prev => ({ ...prev, authors: validationError }));
         } else {
-            setAuthor(prev => ([...prev, { id: uuidv4(), name: (formData.authors).trim() }]));
+            setAuthor(prev => ([...prev, { id: generateId(), name: (formData.authors).trim() }]));
             setFormData(prev => ({ ...prev, authors: '' }));
+        }
+    }
+
+    // Handler for convenient author creation using 'Enter' key
+
+    const handleAuthorCreationKeyDown = (event: React.KeyboardEvent<HTMLInputElement>): void => {
+        if (event.key === 'Enter' && formData.authors.trim()) {
+            handleAuthorCreation();
         }
     }
 
@@ -101,7 +111,6 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
             setAddedAuthors(addedAuthors.filter(author => author.id !== id));
             addedAuthors.length === 0 && setAuthorErrors(false);
         }
-        // addedAuthors.length !== 0 ? setAuthorErrors(true) : setAuthorErrors(false);
     }
 
     // Handler for form submittion by clicking on the button "CREATE COURSE"
@@ -119,7 +128,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
             const date = formatCreationDate();
 
             const createdCourse: Course = {
-                id: uuidv4(),
+                id: generateId(),
                 title: formData.title,
                 description: formData.description,
                 creationDate: date,
@@ -139,6 +148,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
             setAuthor([]);
             setAddedAuthors([]);
             setAuthorErrors(true);
+            navigate('/courses')
         }
 
     }
@@ -164,7 +174,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                 <div className={styles.authors}>
                     <h2>Authors</h2>
                     <div className={styles['authors-input-container']}>
-                        <Input hasError={(formErrors.authors || (!authorErrors && addedAuthors.length === 0)) ? true : false} errorMessage={formErrors.authors} inputType='text' name='authors' labelText='Author Name' inputWidth='400px' onChange={handleChange} value={formData.authors} />
+                        <Input hasError={(formErrors.authors || (!authorErrors && addedAuthors.length === 0)) ? true : false} errorMessage={formErrors.authors} inputType='text' name='authors' labelText='Author Name' inputWidth='400px' onChange={handleChange} value={formData.authors} onKeyDown={handleAuthorCreationKeyDown} />
                         <Button buttonText={CREATE_AUTHOR_TEXT} clickHandler={handleAuthorCreation} buttonWidth="185px" />
                     </div>
                     <div className={styles['authors-list-container']}>
