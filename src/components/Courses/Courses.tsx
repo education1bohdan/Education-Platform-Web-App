@@ -42,13 +42,12 @@ const Courses: React.FC<Props> = ({ coursesList, authorsList }) => {
         <div className='main-content'>
             <div className={styles["courses-action-container"]}>
                 <SearchBar filterCourses={filterCourses} coursesList={coursesList} />
-                <Link to='/create-course'><Button buttonText={ADD_NEW_COURSE_TEXT} buttonWidth={'183px'} /></Link>
+                <Link to='/courses/add'><Button buttonText={ADD_NEW_COURSE_TEXT} buttonWidth={'183px'} /></Link>
             </div>
             <ul className={coursesListClasses}>
                 {courses.length === 0 ?
                     <h1>No results...</h1>
                     : courses.map(({ id, title, description, creationDate, duration, authors }, index) => {
-
                         return (
                             <li key={id || index}>
                                 <CourseCard
