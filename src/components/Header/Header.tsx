@@ -4,7 +4,7 @@ import UserLogging from "./components/UserLogging/UserLogging";
 import "./Header.scss";
 
 
-const Header: React.FC<{}> = function () {
+const Header: React.FC<{ isAuth: boolean, logout: () => void }> = function ({ isAuth, logout }) {
 
     const location = useLocation();
 
@@ -15,7 +15,7 @@ const Header: React.FC<{}> = function () {
     return (
         <header>
             <Logo />
-            {!shouldHideHeader && <UserLogging />}
+            {!shouldHideHeader && <UserLogging isAuth={isAuth} logout={logout} />}
         </header>
     )
 }
