@@ -7,12 +7,14 @@ interface props {
     buttonWidth?: string;
     buttonHeight?: string;
     form?: string;
+    name?: string;
+    role?: string;
 }
 
-const LogoutButton: React.FC<props> = ({ type = 'button', buttonText, clickHandler, buttonWidth = '140px', buttonHeight = '50px', form }) => {
+const Button: React.FC<props> = ({ type = 'button', buttonText, clickHandler, buttonWidth = '140px', buttonHeight = '50px', form, name, role }) => {
     return (
-        <button className={styles.button} type={type} onClick={clickHandler} form={form} style={{ width: buttonWidth, height: buttonHeight }}>{buttonText}</button>
+        <button className={styles.button} type={type} onClick={clickHandler} form={form} style={{ width: buttonWidth, height: buttonHeight }} name={name} role={role}>{buttonText}</button>
     )
 }
 
-export default LogoutButton;
+export default Button;

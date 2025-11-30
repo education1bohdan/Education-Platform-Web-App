@@ -15,7 +15,7 @@ interface Props {
 
 const CourseInfo: React.FC<Props> = ({ coursesList, authorsList }) => {
     const { courseId } = useParams();
-    const course = coursesList.find(c => c.id === courseId);
+    const course: Course | undefined = coursesList.find(c => c.id === courseId);
     if (!course) {
         return (
             <div className={"main-content " + styles.notFound}>

@@ -28,18 +28,18 @@ function App() {
   }, [courses]);
 
   useEffect(() => {
-    setIsAuth(!!localStorage.getItem('token'));
+    setIsAuth(!!localStorage.getItem('MOCK_TOKEN'));
   }, [])
 
   const login = (authToken: string, userName: string): void => {
-    localStorage.setItem('token', authToken);
+    localStorage.setItem('MOCK_TOKEN', authToken);
     localStorage.setItem('user', userName)
     setIsAuth(true);
   }
 
   const logout = (): void => {
     setIsAuth(false);
-    localStorage.removeItem('token');
+    localStorage.removeItem('MOCK_TOKEN');
   }
 
   const courseCreationHandler = (createdCourse: Course, addedAuthors: Authors[]): void => {
