@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Authentification from "../Authentification/Authentification";
 import Input from "../../common/Input/Input";
 import { LOGIN_BUTTON_TEXT } from "../../constants";
@@ -20,15 +20,12 @@ interface ErrorsObject {
     [key: string]: string | undefined;
 }
 
-const Login = () => {
-    const navigate = useNavigate();
-    const authToken = localStorage.getItem('authToken');
+interface Props {
+    login: Function;
+}
 
-    useEffect(() => {
-        if (authToken) {
-            navigate('/courses', { replace: true });
-        }
-    }, [authToken, navigate]);
+const Login: React.FC<Props> = ({ login }) => {
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState<FormData>({
         email: '',
@@ -57,8 +54,8 @@ const Login = () => {
             const result = await fetchAuth<FormData>(formData, '/login');
 
             if (Object.keys(formErrors).length === 0 && result.successful) {
-                localStorage.setItem('authToken', result.result);
-                navigate('/courses')
+                login(result.result, result.user.name);
+                navigate('/courses');
                 setFormData({
                     email: '',
                     password: '',
