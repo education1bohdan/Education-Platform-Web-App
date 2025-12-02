@@ -54,7 +54,7 @@ const CourseInfo: React.FC<Props> = ({ coursesList, authorsList }) => {
                             </div>
                         </div>
                     </div>
-                    <Link to="/"><Button buttonText={BACK_TEXT} buttonWidth="185px" /></Link>
+                    <Link to="/courses"><Button buttonText={BACK_TEXT} buttonWidth="185px" /></Link>
                 </div>
             </div>
 
