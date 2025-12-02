@@ -1,0 +1,14 @@
+@use '/src/scss/variables' as vars;
+
+.logging-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        color: vars.$primary-dark;
+        font-size: 14px;
+        font-weight: 600;
+        margin-right: 1.7em;
+    }
+}

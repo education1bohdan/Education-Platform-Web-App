@@ -1,0 +1,11 @@
+header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    height: 80px;
+    padding: 0 3.5%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+}

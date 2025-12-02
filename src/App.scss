@@ -1,0 +1,6 @@
+.App {
+    display: grid;
+    grid:
+        "header header header" auto ". content ." auto / 1fr 8fr 1fr;
+    background-color: #F7F7F7;
+}

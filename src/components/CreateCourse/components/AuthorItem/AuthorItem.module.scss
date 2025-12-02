@@ -1,0 +1,33 @@
+@use '../../../../scss/variables' as vars;
+
+.authorItemWrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 0.25em;
+    color: vars.$primary-dark;
+
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 5px;
+        border: none;
+        background-color: #fff;
+        font-size: 0;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        .plus {
+            width: 8px;
+            height: fit-content;
+        }
+
+        .trashBin {
+            width: 12px;
+            height: fit-content;
+        }
+    }
+}

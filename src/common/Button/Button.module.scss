@@ -1,0 +1,26 @@
+@use '/src/scss/variables' as vars;
+
+.button {
+    border: none;
+    border-radius: 4px;
+    background-color: vars.$primary-blue;
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+    font-weight: 700;
+    font-size: 1em;
+    outline: none;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #004055;
+        color: rgb(235, 235, 235);
+    }
+
+    &:active {
+        background-color: #002531;
+    }
+
+    &:focus-visible {
+        outline: 2px solid vars.$outline-color;
+    }
+}
