@@ -22,6 +22,7 @@ const userSlice = createSlice({
             state.isAuth = true;
             state.name = action.payload.name;
             state.email = action.payload.email;
+            state.token = action.payload.token;
             localStorage.setItem('token', action.payload.token);
             localStorage.setItem('user', action.payload.name);
         },

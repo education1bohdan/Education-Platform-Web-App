@@ -14,7 +14,7 @@ import generateId from '../../helpers/generateId';
 import formatCreationDate from '../../helpers/formatCreationDate';
 import { useDispatch } from 'react-redux';
 import { addCourse } from '@/store/courses/coursesSlice';
-import { addAuthors } from '@/store/authors/authorsSlice';
+import { addAuthor } from '@/store/authors/authorsSlice';
 
 interface formData {
     title: string;
@@ -137,7 +137,7 @@ const CreateCourse: React.FC = () => {
             }
 
             dispatch(addCourse(createdCourse));
-            dispatch(addAuthors(addedAuthors));
+            dispatch(addAuthor(addedAuthors));
 
             setFormData({
                 title: '',
