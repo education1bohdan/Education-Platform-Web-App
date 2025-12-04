@@ -4,9 +4,9 @@ import Input from "../../common/Input/Input";
 import { LOGIN_BUTTON_TEXT } from "../../constants";
 import fetchAuth from "../../helpers/fetchAuth";
 import { useNavigate } from "react-router-dom";
-
-
 import validateAuth from "../../helpers/validateAuth";
+import { useDispatch } from "react-redux";
+import { login } from "@/store/user/userSlice";
 
 interface FormData {
     email: string;
@@ -20,11 +20,8 @@ interface ErrorsObject {
     [key: string]: string | undefined;
 }
 
-interface Props {
-    login: Function;
-}
-
-const Login: React.FC<Props> = ({ login }) => {
+const Login: React.FC = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState<FormData>({
@@ -52,9 +49,14 @@ const Login: React.FC<Props> = ({ login }) => {
 
         try {
             const result = await fetchAuth<FormData>(formData, '/login');
+            const resultObject = {
+                name: result.user.name,
+                email: result.user.email,
+                token: result.result,
+            }
 
             if (Object.keys(formErrors).length === 0 && result.successful) {
-                login(result.result, result.user.name);
+                dispatch(login(resultObject));
                 navigate('/courses');
                 setFormData({
                     email: '',

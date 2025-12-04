@@ -1,8 +1,9 @@
 import styles from './Button.module.scss';
 
 interface props {
-    buttonText: string;
-    clickHandler?: React.MouseEventHandler<HTMLButtonElement>;
+    children?: React.ReactNode;
+    buttonText?: string;
+    clickHandler?: () => void;
     type?: 'button' | 'submit' | 'reset';
     buttonWidth?: string;
     buttonHeight?: string;
@@ -11,9 +12,9 @@ interface props {
     role?: string;
 }
 
-const Button: React.FC<props> = ({ type = 'button', buttonText, clickHandler, buttonWidth = '140px', buttonHeight = '50px', form, name, role }) => {
+const Button: React.FC<props> = ({ children, type = 'button', buttonText, clickHandler, buttonWidth = '140px', buttonHeight = '50px', form, name, role }) => {
     return (
-        <button className={styles.button} type={type} onClick={clickHandler} form={form} style={{ width: buttonWidth, height: buttonHeight }} name={name} role={role}>{buttonText}</button>
+        <button className={styles.button} type={type} onClick={clickHandler} form={form} style={{ width: buttonWidth, height: buttonHeight }} name={name} role={role}>{buttonText}{children}</button>
     )
 }
 

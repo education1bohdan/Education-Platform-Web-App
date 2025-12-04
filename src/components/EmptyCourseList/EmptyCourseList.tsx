@@ -12,7 +12,7 @@ const EmptyCourseList: React.FC = () => {
             <div className="empty-list">
                 <h1>Course List is Empty</h1>
                 <p>Please use "Add New Course" button to add your first course</p>
-                <Link to='/create-course'><Button buttonText={ADD_NEW_COURSE_TEXT} buttonWidth={'233px'} /></Link>
+                <Link to='/courses/add'><Button buttonText={ADD_NEW_COURSE_TEXT} buttonWidth={'233px'} /></Link>
             </div>
         </div>
     )

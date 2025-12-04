@@ -54,3 +54,26 @@ export const mockedAuthorsList = [
     },
 ]
 
+export interface Course {
+    id: string;
+    title: string;
+    description: string;
+    creationDate: string;
+    duration: number;
+    authors: string[];
+}
+export interface Author {
+    id: string;
+    name: string;
+}
+
+export interface state {
+    user: {
+        isAuth: boolean,
+        name: string,
+        email: string,
+        token: string,
+    },
+    courses: [],
+    authors: []
+}

@@ -9,13 +9,12 @@ import getCourseDuration from '../../helpers/getCourseDuration';
 import validateCreateCourse from '../../helpers/validateCreateCourse';
 import validateCourseAuthors from '../../helpers/validateCourseAuthors';
 import styles from './CreateCourse.module.scss';
-import { Course, Authors } from '../Courses/Courses';
+import { Course, Author } from '../../constants';
 import generateId from '../../helpers/generateId';
 import formatCreationDate from '../../helpers/formatCreationDate';
-
-interface Props {
-    courseCreationHandler: (createdCourse: Course, addedAuthors: Authors[]) => void;
-}
+import { useDispatch } from 'react-redux';
+import { addCourse } from '@/store/courses/coursesSlice';
+import { addAuthors } from '@/store/authors/authorsSlice';
 
 interface formData {
     title: string;
@@ -34,11 +33,12 @@ export interface ErrorsObject {
     [key: string]: string | undefined;
 }
 
-const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
+const CreateCourse: React.FC = () => {
+    const dispatch = useDispatch();
     const [courseDuration, setCourseDuration] = useState<string[]>(['00:00', 'hours']);
     const [formErrors, setFormErrors] = useState<ErrorsObject>({});
-    const [authorList, setAuthor] = useState<Authors[]>([]);
-    const [addedAuthors, setAddedAuthors] = useState<Authors[]>([]);
+    const [authorList, setAuthor] = useState<Author[]>([]);
+    const [addedAuthors, setAddedAuthors] = useState<Author[]>([]);
     const [authorErrors, setAuthorErrors] = useState<boolean>(true);
     const [formData, setFormData] = useState<formData>({
         title: '',
@@ -118,7 +118,7 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
 
-        const validationErrors = validateCreateCourse<formData, Authors>(formData, addedAuthors, 2);
+        const validationErrors = validateCreateCourse<formData, Author>(formData, addedAuthors, 2);
 
         setFormErrors(validationErrors);
         addedAuthors.length === 0 && setAuthorErrors(false);
@@ -135,7 +135,9 @@ const CreateCourse: React.FC<Props> = ({ courseCreationHandler }) => {
                 duration: Number(formData.duration),
                 authors: addedAuthors.map((a) => a.id),
             }
-            courseCreationHandler(createdCourse, addedAuthors);
+
+            dispatch(addCourse(createdCourse));
+            dispatch(addAuthors(addedAuthors));
 
             setFormData({
                 title: '',

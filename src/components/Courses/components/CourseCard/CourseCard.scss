@@ -4,7 +4,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    // align-items: flex-start;
     position: relative;
     box-sizing: border-box;
     padding: 1.7rem;
@@ -34,6 +33,7 @@
         column-gap: 4em;
 
         .left-side {
+            flex-shrink: 1;
 
             p {
                 color: vars.$primary-dark;
@@ -46,7 +46,7 @@
             justify-content: center;
             row-gap: 2rem;
             width: 25%;
-            min-width: 180px;
+            min-width: 200px;
             flex-shrink: 0;
 
             .course-info-list {
@@ -66,6 +66,23 @@
 
             a {
                 width: fit-content;
+            }
+
+            .buttonContainer {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                row-gap: 10px;
+                column-gap: 10px;
+                width: fit-content;
+
+                button {
+                    flex-shrink: 0;
+
+                    img {
+                        height: 25px;
+                    }
+                }
             }
         }
     }

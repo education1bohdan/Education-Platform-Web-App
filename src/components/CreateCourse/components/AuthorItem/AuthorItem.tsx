@@ -1,11 +1,8 @@
 import plus from '../../../../assets/plus.svg';
 import trashBin from '../../../../assets/trash-bin.svg';
 import styles from './AuthorItem.module.scss';
+import { Author } from '@/constants';
 
-interface Author {
-    id: string;
-    name: string;
-}
 
 interface Props {
     author: Author;
