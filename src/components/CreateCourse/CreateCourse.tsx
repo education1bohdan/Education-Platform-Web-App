@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Input from '../../common/Input/Input';
 import Button from "../../common/Button/Button";
 import TextArea from '../../common/TextArea/TextArea';
 import AuthorItem from './components/AuthorItem/AuthorItem';
-import { CREATE_AUTHOR_TEXT, CANCEL, CREATE_COURSE } from '../../constants';
+import { CREATE_AUTHOR_TEXT, CANCEL, CREATE_COURSE, Course, Author } from '../../constants';
 import getCourseDuration from '../../helpers/getCourseDuration';
 import validateCreateCourse from '../../helpers/validateCreateCourse';
 import validateCourseAuthors from '../../helpers/validateCourseAuthors';
-import styles from './CreateCourse.module.scss';
-import { Course, Author } from '../../constants';
-import generateId from '../../helpers/generateId';
 import formatCreationDate from '../../helpers/formatCreationDate';
-import { useDispatch } from 'react-redux';
+import styles from './CreateCourse.module.scss';
+import generateId from '../../helpers/generateId';
 import { addCourse } from '@/store/courses/coursesSlice';
 import { addAuthor } from '@/store/authors/authorsSlice';
 
@@ -34,7 +33,6 @@ export interface ErrorsObject {
 }
 
 const CreateCourse: React.FC = () => {
-    const dispatch = useDispatch();
     const [courseDuration, setCourseDuration] = useState<string[]>(['00:00', 'hours']);
     const [formErrors, setFormErrors] = useState<ErrorsObject>({});
     const [authorList, setAuthor] = useState<Author[]>([]);
@@ -49,6 +47,7 @@ const CreateCourse: React.FC = () => {
     })
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     // Change event handler for most controlled form input fields 
 
@@ -84,7 +83,9 @@ const CreateCourse: React.FC = () => {
         if (validationError) {
             setFormErrors(prev => ({ ...prev, authors: validationError }));
         } else {
-            setAuthor(prev => ([...prev, { id: generateId(), name: (formData.authors).trim() }]));
+            const newAuthor = { id: generateId(), name: (formData.authors).trim() };
+            setAuthor(prev => ([...prev, newAuthor]));
+            dispatch(addAuthor(newAuthor));
             setFormData(prev => ({ ...prev, authors: '' }));
         }
     }
@@ -136,8 +137,9 @@ const CreateCourse: React.FC = () => {
                 authors: addedAuthors.map((a) => a.id),
             }
 
+            // State update & form clearance
+
             dispatch(addCourse(createdCourse));
-            dispatch(addAuthor(addedAuthors));
 
             setFormData({
                 title: '',
@@ -152,7 +154,6 @@ const CreateCourse: React.FC = () => {
             setAuthorErrors(true);
             navigate('/courses')
         }
-
     }
 
     return (

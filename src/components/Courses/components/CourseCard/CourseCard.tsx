@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Button from '../../../../common/Button/Button';
 import pencil from '../../../../assets/pencil.svg';
 import trashBin from '../../../../assets/trash-bin2.svg';
-import { SHOW_COURSE_TEXT } from '../../../../constants';
+import { Course, SHOW_COURSE_TEXT } from '../../../../constants';
+import { deleteCourse, updateCourse } from '@/store/courses/coursesSlice';
 import "./CourseCard.scss";
-import { deleteCourse } from '@/store/courses/coursesSlice';
-import { useDispatch } from 'react-redux';
+import { addAuthor } from '@/store/authors/authorsSlice';
 
 export interface Props {
     id: string;
@@ -16,14 +17,26 @@ export interface Props {
     authors: string;
 }
 
-
-
 const CourseCard: React.FC<Props> = ({ id, title, description, creationDate, duration, authors }) => {
     const dispatch = useDispatch();
-    const handleDeleteCourse = () => {
+
+    const handleDeleteCourse = (): void => {
         dispatch(deleteCourse(id));
     }
 
+    const handleUpdateCourse = (): void => {
+
+        const newCourse: Course = {
+            id: id,
+            title: 'Updated Course',
+            description: '123456',
+            creationDate: '01/01/2025',
+            duration: 5,
+            authors: ['1', '2'],
+        }
+        dispatch(updateCourse(newCourse));
+        dispatch(addAuthor({ id: '1', name: 'John Doe' }));
+    }
     return (<div className="course-card">
         <div className="side-line"></div>
         <h2>{title}</h2>
@@ -40,7 +53,7 @@ const CourseCard: React.FC<Props> = ({ id, title, description, creationDate, dur
                 <div className='buttonContainer'>
                     <Link to={id}><Button buttonText={SHOW_COURSE_TEXT} buttonWidth={'180px'} /></Link>
                     <Button buttonWidth='61px' clickHandler={handleDeleteCourse} name='Delete' role='button'><img src={trashBin} alt="Trash Bin" /></Button>
-                    <Button buttonWidth='61px' name='Update' role='button'><img src={pencil} alt="Pencil" /></Button>
+                    <Button buttonWidth='61px' clickHandler={handleUpdateCourse} name='Update' role='button'><img src={pencil} alt="Pencil" /></Button>
                 </div>
             </div>
         </div>

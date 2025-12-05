@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Author } from "../../constants"
 
 const initialState: Author[] = [];
@@ -7,11 +7,11 @@ const authorsSlice = createSlice({
     name: 'authors',
     initialState,
     reducers: {
-        setAuthors: (_state, action) => {
+        setAuthors: (_state, action: PayloadAction<Author[]>) => {
             return action.payload;
         },
-        addAuthor: (state, action) => {
-            state.push(...action.payload);
+        addAuthor: (state, action: PayloadAction<Author>) => {
+            state.push(action.payload);
         },
     },
 })
