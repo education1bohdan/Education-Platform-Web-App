@@ -36,6 +36,7 @@ const CourseCard: React.FC<Props> = ({ id, title, description, creationDate, dur
         }
         dispatch(updateCourse(newCourse));
         dispatch(addAuthor({ id: '1', name: 'John Doe' }));
+        dispatch(addAuthor({ id: '2', name: 'Joe Dhon' }));
     }
     return (<div className="course-card">
         <div className="side-line"></div>
