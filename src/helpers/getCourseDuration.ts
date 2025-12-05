@@ -8,6 +8,7 @@ function getCourseDuration(value: number | string): string {
 
     let m: number = durationValue % 60;
     let h: number = (durationValue - m) / 60;
+    let d: number = Math.floor(durationValue / 1440)
 
     let hh: string | number = h < 10 ? `0${h}` : h;
     let mm: string | number = m < 10 ? `0${m}` : m;
@@ -16,6 +17,8 @@ function getCourseDuration(value: number | string): string {
         return `${hh}:${mm} minute`;
     } else if (h === 0 && m > 0) {
         return `${hh}:${mm} minutes`;
+    } else if (h > 24) {
+        return d === 1 ? `${d} day` : `${d} days`;
     }
 
     return h === 1 ? `${hh}:${mm} hour` : `${hh}:${mm} hours`;

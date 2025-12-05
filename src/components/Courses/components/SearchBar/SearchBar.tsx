@@ -4,10 +4,11 @@ import Button from "../../../../common/Button/Button";
 import { INPUT_SEARCHBAR_TEXT, SEARCH_BUTTON_TEXT } from "../../../../constants";
 import { Course } from "../../../../constants";
 import "./SearchBar.scss";
+import { DisplayedData } from "../../Courses";
 
 
 interface Props {
-    filterCourses: (isSearching: boolean, courses?: Course[]) => void;
+    filterCourses: (filteredCoursesData: DisplayedData) => void;
     coursesList: Course[];
 }
 
@@ -22,11 +23,17 @@ const SearchBar: React.FC<Props> = ({ filterCourses, coursesList }) => {
     const handleSearch = (): void => {
         const realData = searchData.trim().toLowerCase();
         if (realData) {
-            const filteredArray: Course[] = coursesList.filter((course) => (course.id.toLowerCase()).includes(realData) || (course.title.toLowerCase()).includes(realData));
-            filterCourses(true, filteredArray);
+            const filteredCourses: Course[] = coursesList.filter((course) => (course.id.toLowerCase()).includes(realData) || (course.title.toLowerCase()).includes(realData));
+            filterCourses({
+                isSearching: true,
+                displayedCourses: filteredCourses,
+            });
 
         } else if (!realData) {
-            filterCourses(false)
+            filterCourses({
+                isSearching: false,
+                displayedCourses: coursesList,
+            });
         }
     }
 

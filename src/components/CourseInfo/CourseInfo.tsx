@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import Button from "../../common/Button/Button";
-import { Course, Authors } from "../Courses/Courses";
+import { Course, Author } from "../../constants";
 import formatCreationDate from "../../helpers/formatCreationDate";
 import getCourseDuration from "../../helpers/getCourseDuration";
 import getAuthorsNames from "../../helpers/getAuthorsNames";
@@ -10,7 +10,7 @@ import styles from "./CourseInfo.module.scss";
 
 interface Props {
     coursesList: Course[];
-    authorsList: Authors[];
+    authorsList: Author[];
 }
 
 const CourseInfo: React.FC<Props> = ({ coursesList, authorsList }) => {

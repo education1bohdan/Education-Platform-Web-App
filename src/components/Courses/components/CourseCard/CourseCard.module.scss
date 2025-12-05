@@ -1,6 +1,6 @@
 @use "../../../../scss/variables" as vars;
 
-.course-card {
+.courseCard {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -11,8 +11,9 @@
     border-radius: 10px;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.20);
     font-family: "Open Sans", sans-serif;
+    min-width: 525px;
 
-    .side-line {
+    .sideLine {
         background-color: vars.$primary-dark;
         width: 7px;
         height: 100%;
@@ -27,29 +28,29 @@
         font-size: 20px;
     }
 
-    .course-container {
+    .courseContainer {
         display: flex;
         justify-content: space-between;
-        column-gap: 4em;
+        column-gap: 20%;
 
-        .left-side {
-            flex-shrink: 1;
+        .leftSide {
 
             p {
                 color: vars.$primary-dark;
             }
         }
 
-        .right-side {
+        .rightSide {
             display: flex;
             flex-direction: column;
             justify-content: center;
             row-gap: 2rem;
-            width: 25%;
-            min-width: 200px;
+            margin-right: 2.5%;
+            width: fit-content;
             flex-shrink: 0;
 
-            .course-info-list {
+            .courseInfoList {
+                width: 330px;
                 color: vars.$primary-dark;
                 list-style: none;
 
@@ -62,6 +63,7 @@
                 b {
                     font-weight: 700;
                 }
+
             }
 
             a {
@@ -71,7 +73,6 @@
             .buttonContainer {
                 display: flex;
                 justify-content: center;
-                flex-wrap: wrap;
                 row-gap: 10px;
                 column-gap: 10px;
                 width: fit-content;

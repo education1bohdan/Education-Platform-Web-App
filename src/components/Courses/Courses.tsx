@@ -15,6 +15,11 @@ import { setAuthors } from '@/store/authors/authorsSlice';
 import { setCourses } from '@/store/courses/coursesSlice';
 import { fetchCourses, fetchAuthors } from "../../services/services"
 
+export interface DisplayedData {
+    isSearching: boolean;
+    displayedCourses: Course[];
+}
+
 const Courses: React.FC = () => {
     const dispatch = useDispatch();
     const coursesList: Course[] = useSelector(getCourses);
@@ -22,6 +27,8 @@ const Courses: React.FC = () => {
     // const [realCoursesList, setRealCoursesList] = useState<Course[]>(coursesList);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const [displayedData, setDisplayedData] = useState<DisplayedData>({ isSearching: false, displayedCourses: coursesList });
+    // const [displayingCourses, setDisplayingCourses] = useState<Course[]>(coursesList)
 
     useEffect(() => {
         if (coursesList.length > 0) {
@@ -51,10 +58,10 @@ const Courses: React.FC = () => {
         loadData();
     }, [])
 
-    // const filterCourses = (isSearching: boolean = false, courses: Course[] = []): void => {
-    //     const filteredCoursesArray: Course[] = courses;
-    //     isSearching ? setRealCoursesList(filteredCoursesArray) : setRealCoursesList(coursesList);
-    // }
+    const filterCourses = (filteredCoursesData: DisplayedData): void => {
+        // isSearching ? setSearchedData({ isSearching: isSearching, searchedCourses: courses }) : setSearchedData({ isSearching: isSearching, searchedCourses: [] });
+        setDisplayedData(filteredCoursesData);
+    }
 
     const coursesListClasses = `${styles['courses-list']} ${coursesList.length === 0 && styles.searchError}`;
 
@@ -65,14 +72,14 @@ const Courses: React.FC = () => {
     return (
         <div className='main-content'>
             <div className={styles["courses-action-container"]}>
-                {/* <SearchBar filterCourses={filterCourses} coursesList={coursesList} /> */}
+                <SearchBar filterCourses={filterCourses} coursesList={coursesList} />
                 <Link to='/courses/add'><Button buttonText={ADD_NEW_COURSE_TEXT} buttonWidth={'183px'} /></Link>
             </div>
             <ul className={coursesListClasses}>
                 {isLoading || error ? <h1>{isLoading ? 'Loading...' : error}</h1>
-                    : (coursesList.length === 0 ?
+                    : (displayedData.isSearching && displayedData.displayedCourses.length === 0 ?
                         <h1>No results...</h1>
-                        : coursesList.map(({ id, title, description, creationDate, duration, authors }, index) => {
+                        : displayedData.displayedCourses.map(({ id, title, description, creationDate, duration, authors }, index) => {
                             return (
                                 <li key={id || index}>
                                     <CourseCard

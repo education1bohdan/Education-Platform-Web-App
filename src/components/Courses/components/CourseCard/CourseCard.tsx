@@ -5,7 +5,7 @@ import pencil from '../../../../assets/pencil.svg';
 import trashBin from '../../../../assets/trash-bin2.svg';
 import { Course, SHOW_COURSE_TEXT } from '../../../../constants';
 import { deleteCourse, updateCourse } from '@/store/courses/coursesSlice';
-import "./CourseCard.scss";
+import styles from "./CourseCard.module.scss";
 import { addAuthor } from '@/store/authors/authorsSlice';
 
 export interface Props {
@@ -38,20 +38,21 @@ const CourseCard: React.FC<Props> = ({ id, title, description, creationDate, dur
         dispatch(addAuthor({ id: '1', name: 'John Doe' }));
         dispatch(addAuthor({ id: '2', name: 'Joe Dhon' }));
     }
-    return (<div className="course-card">
-        <div className="side-line"></div>
+
+    return (<div className={styles.courseCard}>
+        <div className={styles.sideLine}></div>
         <h2>{title}</h2>
-        <div className="course-container">
-            <div className="left-side">
+        <div className={styles.courseContainer}>
+            <div className={styles.leftSide}>
                 <p>{description}</p>
             </div>
-            <div className="right-side">
-                <ul className='course-info-list'>
+            <div className={styles.rightSide}>
+                <ul className={styles.courseInfoList}>
                     <li><b>Authors: </b>{authors}</li>
                     <li><b>Duration: </b>{duration}</li>
                     <li><b>Created: </b>{creationDate}</li>
                 </ul>
-                <div className='buttonContainer'>
+                <div className={styles.buttonContainer}>
                     <Link to={id}><Button buttonText={SHOW_COURSE_TEXT} buttonWidth={'180px'} /></Link>
                     <Button buttonWidth='61px' clickHandler={handleDeleteCourse} name='Delete' role='button'><img src={trashBin} alt="Trash Bin" /></Button>
                     <Button buttonWidth='61px' clickHandler={handleUpdateCourse} name='Update' role='button'><img src={pencil} alt="Pencil" /></Button>

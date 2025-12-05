@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Author } from "../../constants"
+import { Author } from "../../constants";
 
 const initialState: Author[] = [];
 
