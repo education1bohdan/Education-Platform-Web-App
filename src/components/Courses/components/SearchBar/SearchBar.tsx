@@ -2,9 +2,7 @@ import { useState } from "react";
 import Input from "../../../../common/Input/Input";
 import Button from "../../../../common/Button/Button";
 import { INPUT_SEARCHBAR_TEXT, SEARCH_BUTTON_TEXT } from "../../../../constants";
-import { Course } from "../../../../constants";
 import "./SearchBar.scss";
-
 
 interface Props {
     filterCourses: (searchingWord: string) => void;
