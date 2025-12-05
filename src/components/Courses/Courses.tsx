@@ -15,20 +15,25 @@ import { setAuthors } from '@/store/authors/authorsSlice';
 import { setCourses } from '@/store/courses/coursesSlice';
 import { fetchCourses, fetchAuthors } from "../../services/services"
 
-export interface DisplayedData {
-    isSearching: boolean;
-    displayedCourses: Course[];
-}
-
 const Courses: React.FC = () => {
     const dispatch = useDispatch();
     const coursesList: Course[] = useSelector(getCourses);
     const authorsList: Author[] = useSelector(getAuthors);
-    // const [realCoursesList, setRealCoursesList] = useState<Course[]>(coursesList);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const [displayedData, setDisplayedData] = useState<DisplayedData>({ isSearching: false, displayedCourses: coursesList });
-    // const [displayingCourses, setDisplayingCourses] = useState<Course[]>(coursesList)
+    const [searchQuery, setSearchQuery] = useState<string>('');
+
+    // Filtering courses list
+
+    const displayedCourses = searchQuery.length > 0
+        ? coursesList.filter(
+            (course) =>
+                course.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                course.title.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+        : coursesList;
+
+    // Fetching courses data
 
     useEffect(() => {
         if (coursesList.length > 0) {
@@ -41,7 +46,6 @@ const Courses: React.FC = () => {
                 if (coursesList.length === 0) {
                     const fetchedCourses = await fetchCourses();
                     dispatch(setCourses(fetchedCourses.result));
-                    // setRealCoursesList(fetchedCourses.result);
                 }
                 if (authorsList.length === 0) {
                     const fetchedAuthors = await fetchAuthors();
@@ -58,12 +62,13 @@ const Courses: React.FC = () => {
         loadData();
     }, [])
 
-    const filterCourses = (filteredCoursesData: DisplayedData): void => {
-        // isSearching ? setSearchedData({ isSearching: isSearching, searchedCourses: courses }) : setSearchedData({ isSearching: isSearching, searchedCourses: [] });
-        setDisplayedData(filteredCoursesData);
+    // Search query setter
+
+    const filterCourses = (searchingWord: string): void => {
+        setSearchQuery(searchingWord);
     }
 
-    const coursesListClasses = `${styles['courses-list']} ${coursesList.length === 0 && styles.searchError}`;
+    const coursesListClasses = `${styles['courses-list']} ${displayedCourses.length === 0 && styles.searchError}`;
 
     if (coursesList.length === 0 && !isLoading && !error) {
         return <EmptyCourseList />
@@ -72,14 +77,14 @@ const Courses: React.FC = () => {
     return (
         <div className='main-content'>
             <div className={styles["courses-action-container"]}>
-                <SearchBar filterCourses={filterCourses} coursesList={coursesList} />
+                <SearchBar filterCourses={filterCourses} />
                 <Link to='/courses/add'><Button buttonText={ADD_NEW_COURSE_TEXT} buttonWidth={'183px'} /></Link>
             </div>
             <ul className={coursesListClasses}>
                 {isLoading || error ? <h1>{isLoading ? 'Loading...' : error}</h1>
-                    : (displayedData.isSearching && displayedData.displayedCourses.length === 0 ?
+                    : (searchQuery && displayedCourses.length === 0 ?
                         <h1>No results...</h1>
-                        : displayedData.displayedCourses.map(({ id, title, description, creationDate, duration, authors }, index) => {
+                        : displayedCourses.map(({ id, title, description, creationDate, duration, authors }, index) => {
                             return (
                                 <li key={id || index}>
                                     <CourseCard
