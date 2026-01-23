@@ -1,6 +1,6 @@
 # 🎓 Education Platform Web App
 
-A comprehensive fullstack application for managing educational courses. This project consists of a high-performance **React** frontend and a robust **NestJS** backend, featuring automated **Swagger** documentation.
+A full-stack React-based educational platform designed to manage and browse educational courses. It features server-based authentication, a search system, and interactive forms with client-side validation for adding new content.
 
 ---
 
@@ -11,7 +11,6 @@ The repository is organized as a monorepo-style structure for easy management:
 * **/frontend**: React application built with Vite, Redux Toolkit, and SCSS Modules.
 * **/backend**: NestJS server providing a RESTful API and Swagger documentation.
 
----
 
 ## 🛠 Tech Stack
 
