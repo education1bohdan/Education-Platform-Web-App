@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "vite --open",
-    "build": "echo \"Dummy build script required for Autocode Compile\"",
+    "build": "vite build",
     "test": "npm run test:junit",
     "test:local": "jest --reporters=default",
     "test:watch": "jest --watchAll --reporters=default",
