@@ -1,5 +1,6 @@
+import { BASE_URL } from "@/constants";
 export const fetchCourses = async () => {
-    const response = await fetch('http://localhost:4000/courses/all');
+    const response = await fetch(`${BASE_URL}/courses/all`);
     if (!response.ok) {
         throw new Error(`Courses loading error: ${response.status}`);
     }
@@ -7,7 +8,7 @@ export const fetchCourses = async () => {
 }
 
 export const fetchAuthors = async () => {
-    const response = await fetch('http://localhost:4000/authors/all');
+    const response = await fetch(`${BASE_URL}/authors/all`);
     if (!response.ok) {
         throw new Error(`Courses loading error: ${response.status}`);
     }

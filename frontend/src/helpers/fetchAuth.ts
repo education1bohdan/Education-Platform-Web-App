@@ -1,6 +1,7 @@
+import { BASE_URL } from "@/constants";
 const fetchAuth = async <T>(newUser: T, path: string) => {
     try {
-        const response = await fetch(`http://localhost:4000${path}`, {
+        const response = await fetch(`${BASE_URL}${path}`, {
             method: 'POST',
             body: JSON.stringify(newUser),
             headers: {
