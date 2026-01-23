@@ -9,7 +9,7 @@ export const CREATE_COURSE = 'CREATE COURSE';
 export const BACK_TEXT = 'BACK';
 export const INPUT_SEARCHBAR_TEXT = 'Input Text';
 export const SEARCH_BUTTON_TEXT = 'SEARCH';
-export const BASE_URL = import.meta.env.DEV ? import.meta.env.VITE_API_URL : 'http://localhost:4000';
+export const BASE_URL = import.meta.env.DEV ? 'http://localhost:4000' : (import.meta.env.VITE_API_URL || 'https://education-platform-web-app.vercel.app');
 
 export const mockedCoursesList = [
     {
