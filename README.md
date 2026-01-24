@@ -14,12 +14,14 @@ A full-stack React-based educational platform designed to manage and browse educ
 
 🔗 You can explore a [**Live Demo**](https://education-platform-web-app.vercel.app) of the website  
 
-## ⚠️ Important Note on Live Demo
+### ⚠️ Important Note on Live Demo
 The backend of this project is hosted on a **Render Free Tier**.
 
 Cold Start: If the site hasn't been visited recently, the server will be in "sleep" mode.
 
 Delay: Please allow **~50 seconds** for the server to wake up when you first load the page. Once awake, the data will sync perfectly.
+
+💡 _Pro Tip: If the data doesn't load immediately, look at the network tab or wait for the loading spinner._
 
 ## 📁 Project Structure
 
@@ -40,7 +42,7 @@ git clone https://github.com/education1bohdan/Education-Platform-Web-App.git
 cd Education-Platform-Web-App
 ```
 
-⚠️ In order for the project (/frontend) to work correctly locally with the local server (/backend), they must run in parallel (Keep both terminals open).
+⚠️ In order for the project (/frontend) to work correctly locally with the local server (/backend), they must run in parallel (Keep both CLIs open).
 
 ### 2. Backend Setup
 
@@ -58,6 +60,7 @@ _Interactive Docs: http://localhost:4000/api (Swagger)_
 ```bash
 cd frontend
 npm install
+npm run start
 ```
 
 _The website will automatically open at: http://localhost:5173_
@@ -70,7 +73,7 @@ If you need to use ports or API URLs different from the defaults, create a .env 
 _For example:_
 ```bash
 PORT=4000
-FRONTEND_URL http://localhost:5173
+FRONTEND_URL=http://localhost:5173
 ```
 _(Default server port is 4000 and Frontend URL is localhost:5173. You can change it to whatever you need.)_
 
