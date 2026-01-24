@@ -37,7 +37,7 @@ To run this project locally, follow these steps:
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/education1bohdan/Education-Platform-Web-App.git
-cd your-repo-name
+cd Education-Platform-Web-App
 ```
 
 ⚠️ In order for the project (/frontend) to work correctly locally with the local server (/backend), they must run in parallel (Keep both terminals open).
