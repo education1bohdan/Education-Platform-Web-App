@@ -21,8 +21,6 @@ Cold Start: If the site hasn't been visited recently, the server will be in "sle
 
 Delay: Please allow **~50 seconds** for the server to wake up when you first load the page. Once awake, the data will sync perfectly.
 
-💡 _Pro Tip: If the data doesn't load immediately, look at the network tab or wait for the loading spinner._
-
 ## 📁 Project Structure
 
 The repository is organized as a monorepo-style structure for easy management:
