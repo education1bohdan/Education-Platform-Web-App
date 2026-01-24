@@ -85,9 +85,9 @@ _(Default Vite API URL is localhost:4000. You can change it to whatever you need
 #### 🌍 Deployment Note
 The project is configured for cloud deployment:
 
-** Frontend **: Ready for Vercel (see vercel.json) and. See it on [Vercel](https://education-platform-web-app.vercel.app)
+**Frontend**: Ready for Vercel (see vercel.json) and. See it on [Vercel](https://education-platform-web-app.vercel.app)
 
-** Backend **: Can be hosted on Render or Railway. See it on [Render](https://education-platform-web-app.onrender.com/api)(_Need to wait ~50 seconds_)
+**Backend**: Can be hosted on Render or Railway. See it on [Render](https://education-platform-web-app.onrender.com/api) (_Need to wait ~50 seconds_)
 
 
 
