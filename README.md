@@ -5,10 +5,11 @@
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white)
 ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
-![Render](https://img.shields.io/badge/Render-Default?style=for-the-badge&logo=render&logoColor=white&color=46E3B7)
+![Render](https://img.shields.io/badge/Render-%2346E3B7.svg?style=flat&logo=render&logoColor=white)
 ![Swagger](https://img.shields.io/badge/-Swagger-%23C1E1C1?style=flat-square&logo=swagger&logoColor=black)
 
-## A full-stack React-based educational platform designed to manage and browse educational courses. It features server-based authentication, a search system, and interactive forms with client-side validation for adding new content.
+A full-stack React-based educational platform designed to manage and browse educational courses.
+It features server-based authentication, a search system, and interactive forms with client-side validation for adding new content.
 
 ---
 
@@ -82,14 +83,12 @@ _(Default Vite API URL is localhost:4000. You can change it to whatever you need
 
 
 #### 🌍 Deployment Note
-
 The project is configured for cloud deployment:
 
-    ** Frontend **: Ready for Vercel (see vercel.json) and. See it on [Vercel](https://education-platform-web-app.vercel.app)
+** Frontend **: Ready for Vercel (see vercel.json) and. See it on [Vercel](https://education-platform-web-app.vercel.app)
 
-    ** Backend **: Can be hosted on Render or Railway. [Render](https://education-platform-web-app.onrender.com/api)
+** Backend **: Can be hosted on Render or Railway. See it on [Render](https://education-platform-web-app.onrender.com/api)(_Need to wait ~50 seconds_)
 
-    Note: If accessing the live demo via Render, the initial request might take 30-60 seconds to process as the instance spins up from a "sleep" state on the free plan.
 
 
 
