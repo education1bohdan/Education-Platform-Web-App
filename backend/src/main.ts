@@ -19,7 +19,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
 
   app.enableCors({
-  origin: ['https://education-platform-web-app.vercel.app', 'http://localhost:5173',],
+  origin: [process.env.FRONTEND_URL, 'http://localhost:5173', 'https://education-platform-web-app.vercel.app'].filter(Boolean),
   methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS',
   credentials: true,
 });
@@ -28,4 +28,5 @@ async function bootstrap() {
 //  await app.listen(4000);
   await app.listen(process.env.PORT || 4000, '0.0.0.0');
 }
+
 bootstrap();
