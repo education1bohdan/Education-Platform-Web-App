@@ -9,7 +9,8 @@
 ![Swagger](https://img.shields.io/badge/-Swagger-%23C1E1C1?style=flat-square&logo=swagger&logoColor=black)
 
 A full-stack React-based educational platform designed to manage and browse educational courses.
-It features server-based authentication, a search system, and interactive forms with client-side validation for adding new content.
+
+It features server-based authentication, a search system, ability to add new content, and interactive forms with client-side validation.
 
 ---
 
@@ -19,6 +20,7 @@ It features server-based authentication, a search system, and interactive forms 
 The backend of this project is hosted on a **Render Free Tier**.
 
 Cold Start: If the site hasn't been visited recently, the server will be in "sleep" mode.
+
 Delay: Please allow **~50 seconds** for the server to wake up when you first load the page. Once awake, the data will sync perfectly.
 
 ## 📁 Project Structure
@@ -51,6 +53,7 @@ npm run start
 ```
 
 _API URL: http://localhost:4000_
+
 _Interactive Docs: http://localhost:4000/api (Swagger)_
 
 ### 3. Frontend Setup
@@ -65,7 +68,8 @@ _The website will automatically open at: http://localhost:5173_
 If you need to use ports or API URLs different from the defaults, create a .env file in the respective directories:
 
 **Backend (/backend/.env)**
-For example:
+
+_For example:_
 ```bash
 PORT=4000
 FRONTEND_URL http://localhost:5173
@@ -73,7 +77,8 @@ FRONTEND_URL http://localhost:5173
 _(Default server port is 4000 and Frontend URL is localhost:5173. You can change it to whatever you need.)_
 
 **Frontend (/frontend/.env)**
-For example:
+
+_For example:_
 ```bash
 VITE_API_URL=http://localhost:4000
 ```
