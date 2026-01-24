@@ -8,9 +8,7 @@
 ![Render](https://img.shields.io/badge/Render-%2346E3B7.svg?style=flat&logo=render&logoColor=white)
 ![Swagger](https://img.shields.io/badge/-Swagger-%23C1E1C1?style=flat-square&logo=swagger&logoColor=black)
 
-A full-stack React-based educational platform designed to manage and browse educational courses.
-
-It features server-based authentication, a search system, ability to add new content, and interactive forms with client-side validation.
+A full-stack React-based educational platform designed to manage and browse educational courses. It features server-based authentication, a search system, ability to add new content, and interactive forms with client-side validation.
 
 ---
 
@@ -87,7 +85,7 @@ _(Default Vite API URL is localhost:4000. You can change it to whatever you need
 
 
 
-#### 🌍 Deployment Note
+### 🌍 Deployment Note
 The project is configured for cloud deployment:
 
 **Frontend**: Ready for Vercel (see vercel.json) and. See it on [Vercel](https://education-platform-web-app.vercel.app)
