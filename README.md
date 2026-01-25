@@ -46,10 +46,9 @@ cd Education-Platform-Web-App
 
 ```bash
 cd backend
-npm install --legacy-peer-deps
+npm install
 npm run start
 ```
-⚠️ **Important:** we use **`npm install --legacy-peer-deps`** to ensure compatibility between NestJS 7 and the latest environment configurations.
 
 _API URL: http://localhost:4000_
 
