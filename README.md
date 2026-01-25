@@ -49,7 +49,7 @@ cd backend
 npm install --legacy-peer-deps
 npm run start
 ```
-⚠️ Important: use `npm install --legacy-peer-deps` for backend setup to avoid Node.js package version conflict.
+⚠️ **Important:** use **`npm install --legacy-peer-deps`** for backend setup to avoid Node.js package version conflict.
 
 _API URL: http://localhost:4000_
 
