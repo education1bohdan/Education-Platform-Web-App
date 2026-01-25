@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 
 import { bdMainPath } from '@helpers/common.helpers';
 
@@ -12,7 +11,6 @@ import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
     CoreModule.forRoot({
       algorithm: 'sha256',
       timeLiving: 3600 * 24, // one day
