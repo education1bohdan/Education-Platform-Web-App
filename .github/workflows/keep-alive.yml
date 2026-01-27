@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping Render Server
-        run: curl -s https://your-service-name.onrender.com/healthcheck
+        run: curl -s https://education-platform-web-app.onrender.com/healthcheck
