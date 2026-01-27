@@ -1,12 +1,15 @@
-name: Keep Server Alive
+name: Keep Render Alive
 
 on:
   schedule:
     - cron: '*/10 * * * *'
+  workflow_dispatch:
 
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Render Server
-        run: curl -s https://education-platform-web-app.onrender.com/healthcheck
+      - name: Ping Server
+        run: |
+          curl -s https://education-platform-web-app.onrender.com/
+          echo "Server pinged successfully!"
