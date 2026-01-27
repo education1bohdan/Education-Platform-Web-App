@@ -1,0 +1,12 @@
+name: Keep Server Alive
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Render Server
+        run: curl -s https://your-service-name.onrender.com/healthcheck
