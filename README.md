@@ -12,7 +12,7 @@ A full-stack React-based educational platform designed to manage and browse educ
 
 ---
 
-## 🔗 You can explore a [**Live Demo**](https://education-platform-web-app.vercel.app) of the website  
+### 🔗 You can explore a [**Live Demo**](https://education-platform-web-app.vercel.app) of the website  
 
 ## 📁 Project Structure
 
