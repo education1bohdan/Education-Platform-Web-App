@@ -12,14 +12,7 @@ A full-stack React-based educational platform designed to manage and browse educ
 
 ---
 
-🔗 You can explore a [**Live Demo**](https://education-platform-web-app.vercel.app) of the website  
-
-### ⚠️ Important Note on Live Demo
-The backend of this project is hosted on a **Render Free Tier**.
-
-Cold Start: If the site hasn't been visited recently, the server will be in "sleep" mode.
-
-Delay: Please allow **~50 seconds** for the server to wake up when you first load the page. Once awake, the data will sync perfectly.
+### 🔗 You can explore a [**Live Demo**](https://education-platform-web-app.vercel.app) of the website  
 
 ## 📁 Project Structure
 
