@@ -1,4 +1,48 @@
-.DS_Store
-.vscode/
-.idea/
+# --- Base / Root ---
 node_modules/
+.DS_Store
+.idea/
+.vscode/
+*.sw?
+*.suo
+
+# --- Backend Specific ---
+backend/dist/
+backend/node_modules/
+backend/bd/
+backend/coverage/
+backend/.nyc_output/
+
+# Backend Logs
+backend/logs/
+backend/*.log
+backend/npm-debug.log*
+backend/yarn-debug.log*
+backend/lerna-debug.log*
+
+# --- Frontend Specific ---
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/package-lock.json
+frontend/junit.xml
+frontend/xunit.xml
+
+# Frontend Editor & Tools
+frontend/*.ntvs*
+frontend/*.njsproj
+frontend/*.sln
+
+# --- Environment Variables (Global & Local) ---
+.env
+*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# --- Exceptions ---
+# Keep VSCode settings if they were explicitly allowed before
+!**/.vscode/settings.json
+!**/.vscode/tasks.json
+!**/.vscode/launch.json
+!**/.vscode/extensions.json
