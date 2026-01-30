@@ -47,24 +47,27 @@ const Login: React.FC = () => {
 
         setFormErrors(validationErrors);
 
-        try {
-            const result = await fetchAuth<FormData>(formData, '/login');
-            const resultObject = {
-                name: result.user.name,
-                email: result.user.email,
-                token: result.result,
+        if (Object.keys(validationErrors).length === 0) {
+            try {
+                const result = await fetchAuth<FormData>(formData, '/login');
+                if (result.successful) {
+                    const resultObject = {
+                        name: result.user.name,
+                        email: result.user.email,
+                        token: result.result,
+                    }
+                    dispatch(login(resultObject));
+                    navigate('/courses');
+                    setFormData({
+                        email: '',
+                        password: '',
+                    });
+                }
             }
-
-            if (Object.keys(formErrors).length === 0 && result.successful) {
-                dispatch(login(resultObject));
-                navigate('/courses');
-                setFormData({
-                    email: '',
-                    password: '',
-                });
+            catch (error) {
+                console.error('Login failed:', error);
+                alert(error);
             }
-        } catch (error) {
-            console.error('Login failed:', error);
         }
     }
 

@@ -46,19 +46,22 @@ const Registration = () => {
 
         setFormErrors(validationErrors);
 
-        try {
-            const result = await fetchAuth<FormData>(formData, '/register');
+        if (Object.keys(validationErrors).length === 0) {
+            try {
+                const result = await fetchAuth<FormData>(formData, '/register');
 
-            if (Object.keys(formErrors).length === 0 && result.successful) {
-                navigate('/login')
-                setFormData({
-                    name: '',
-                    email: '',
-                    password: '',
-                });
+                if (result.successful) {
+                    navigate('/login')
+                    setFormData({
+                        name: '',
+                        email: '',
+                        password: '',
+                    });
+                }
+            } catch (error) {
+                console.error('Registration failed:', error);
+                alert(error);
             }
-        } catch (error) {
-            console.error('Registration failed:', error);
         }
     }
 
